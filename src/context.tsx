@@ -15,20 +15,30 @@ export interface IAppState {
   user?: IUser
 }
 
+export const appDefaultState: IAppContext = {
+  setContextValue: (payload) => {
+    console.error('AppContext not found')
+  },
+  activePane: undefined,
+  deployTarget: undefined,
+  showUnsureModal: false,
+  user: {},
+}
+
 export interface IAppContext extends IAppState {
   setContextValue: (payload: Pick<IAppState, keyof IAppState>) => void
 }
 
 export type PropsWithContext<T> = IAppContext & T
 
-export const AppContext = React.createContext({})
+export const AppContext = React.createContext<IAppContext>(appDefaultState)
 
 export function withAppContext<T>(
-  Component: React.FunctionComponent<PropsWithContext<T>>,
+  Component:
+    | React.FunctionComponent<PropsWithContext<T>>
+    | React.ComponentClass<PropsWithContext<T>>,
 ): (props: T) => React.ReactElement<PropsWithContext<T>> {
   return (props) => (
-    <AppContext.Consumer>
-      {(ctx) => <Component {...props} {...(ctx as IAppContext)} />}
-    </AppContext.Consumer>
+    <AppContext.Consumer>{(ctx) => <Component {...props} {...ctx} />}</AppContext.Consumer>
   )
 }
