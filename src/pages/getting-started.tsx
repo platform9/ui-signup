@@ -8,7 +8,7 @@ import Link from '../elements/link'
 import { PropsWithContext, withAppContext } from '../context'
 import { ViewPanes, DeployTargets } from '../constants'
 
-interface Props {}
+type Props = PropsWithChildren<{}>
 
 const calloutItems = [
   'Spin up a Kubernetes cluster in < 5 minutes',
@@ -21,11 +21,7 @@ const calloutItems = [
 
 const nextView = ViewPanes.CreateUser
 
-function GettingStarted({
-  children,
-  deployTarget,
-  setContextValue,
-}: PropsWithChildren<PropsWithContext<Props>>) {
+function GettingStarted({ children, deployTarget, setContextValue }: PropsWithContext<Props>) {
   const handleClick = () => {
     if (deployTarget) {
       setContextValue({ activePane: nextView })
@@ -74,4 +70,4 @@ function GettingStarted({
   )
 }
 
-export default withAppContext(GettingStarted)
+export default withAppContext<Props>(GettingStarted)

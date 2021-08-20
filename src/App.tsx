@@ -30,6 +30,12 @@ class App extends React.Component<any, IAppContext> {
     activePane: ViewPanes.GettingStarted,
     deployTarget: undefined,
     showUnsureModal: false,
+    user: {
+      firstName: '',
+      lastName: '',
+      organizationName: '',
+      organizationEmail: '',
+    },
 
     setContextValue: this.setContextValue,
   }

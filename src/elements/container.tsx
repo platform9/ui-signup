@@ -3,16 +3,16 @@ import { PropsWithContext, withAppContext } from '../context'
 import Button from './button'
 import Text from './text'
 
-interface Props {
+type Props = PropsWithChildren<{
   rightPanel?: React.ReactNode
-}
+}>
 
 function Container({
   children,
   rightPanel,
   showUnsureModal,
   setContextValue,
-}: PropsWithChildren<PropsWithContext<Props>>) {
+}: PropsWithContext<Props>) {
   return (
     <article
       id="uiSignupElementsContainer"
@@ -46,4 +46,4 @@ function UnsureModal({ onClose }) {
   )
 }
 
-export default withAppContext(Container)
+export default withAppContext<Props>(Container)
