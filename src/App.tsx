@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+// import logo from './logo.svg'
+import GettingStarted from './pages/getting-started'
+import CreateUser from './pages/create-user'
+import ConfirmAndDeploy from './pages/confirm-and-deploy'
+import { ViewPanes } from './constants'
+import { AppContext, IAppContext } from './context'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const viewByActiveType = {
+  [ViewPanes.GettingStarted]: GettingStarted,
+  [ViewPanes.CreateUser]: CreateUser,
+  [ViewPanes.ConfirmAndDeploy]: ConfirmAndDeploy,
 }
 
-export default App;
+class App extends React.Component<any, IAppContext> {
+  componentDidMount() {
+    window.addEventListener('popstate', this.handleLocationChange)
+  }
+
+  handleLocationChange = (e: PopStateEvent) => {
+    // TODO: handle location change
+  }
+
+  setContextValue = (payload) => {
+    this.setState(payload)
+  }
+
+  state = {
+    activePane: ViewPanes.GettingStarted,
+    deployTarget: undefined,
+    showUnsureModal: false,
+
+    setContextValue: this.setContextValue,
+  }
+
+  render() {
+    const ActiveView = viewByActiveType[this.state.activePane]
+    return (
+      <AppContext.Provider value={this.state}>
+        <main id="uiSignupAppMainEntry">
+          <ActiveView />
+        </main>
+      </AppContext.Provider>
+    )
+  }
+}
+
+export default App
