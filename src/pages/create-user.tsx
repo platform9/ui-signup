@@ -11,19 +11,26 @@ import { ViewPanes } from '../constants'
 
 interface Props {}
 const nextView = ViewPanes.ConfirmAndDeploy
-function CreateUser({ setContextValue, ...props }: PropsWithContext<Props>) {
+function CreateUser({ setContextValue, user, ...props }: PropsWithContext<Props>) {
   const handleClick = () => {
     setContextValue({ activePane: nextView })
+  }
+  const handleInputChange = (e) => {
+    setContextValue({ user: { ...user, [e.target.name]: e.target.value } })
   }
   return (
     <Container rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}>
       <Text variant="h3" id="uiSignupElementsTextBlue200">
         Tell us more about yourself
       </Text>
-      <Input placeholder="First Name" />
-      <Input placeholder="Last Name" />
-      <Input placeholder="Organization Name" />
-      <Input placeholder="Organization Email" />
+      <Input name="firstName" placeholder="First Name" onChange={handleInputChange} />
+      <Input name="lastName" placeholder="Last Name" onChange={handleInputChange} />
+      <Input name="organizationName" placeholder="Organization Name" onChange={handleInputChange} />
+      <Input
+        name="organizationEmail"
+        placeholder="Organization Email"
+        onChange={handleInputChange}
+      />
       <Button onClick={handleClick}>
         Continue <Icon icon="arrow-right" />
       </Button>
@@ -33,4 +40,4 @@ function CreateUser({ setContextValue, ...props }: PropsWithContext<Props>) {
     </Container>
   )
 }
-export default withAppContext(CreateUser)
+export default withAppContext<Props>(CreateUser)

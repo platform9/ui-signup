@@ -5,7 +5,7 @@ import GettingStarted from './pages/getting-started'
 import CreateUser from './pages/create-user'
 import ConfirmAndDeploy from './pages/confirm-and-deploy'
 import { ViewPanes } from './constants'
-import { AppContext, IAppContext } from './context'
+import { AppContext, appDefaultState, IAppContext } from './context'
 
 const viewByActiveType = {
   [ViewPanes.GettingStarted]: GettingStarted,
@@ -27,9 +27,14 @@ class App extends React.Component<any, IAppContext> {
   }
 
   state = {
+    ...appDefaultState,
     activePane: ViewPanes.GettingStarted,
-    deployTarget: undefined,
-    showUnsureModal: false,
+    user: {
+      firstName: '',
+      lastName: '',
+      organizationName: '',
+      organizationEmail: '',
+    },
 
     setContextValue: this.setContextValue,
   }
