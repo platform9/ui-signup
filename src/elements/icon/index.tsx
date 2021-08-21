@@ -14,7 +14,7 @@ interface Props {
 
 export default function Icon({ icon, size = 16, color = '' }: Props) {
   return (
-    <i style={{ fontSize: size }} id={`uiSignupElementsIcon${color}`}>
+    <i style={{ fontSize: size }} className={`uiSignupElementsIcon${color}`}>
       {icons[icon]}
     </i>
   )

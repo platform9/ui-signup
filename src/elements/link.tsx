@@ -9,8 +9,8 @@ interface Props
 
 export default function Link({ children, ...props }: PropsWithChildren<Props>) {
   return (
-    <a id="uiSignupElementsLink" {...props}>
-      <Text id="uiSignupElementsTextBlue500" variant="body2">
+    <a className="uiSignupElementsLink" {...props}>
+      <Text className="uiSignupElementsTextBlue500" variant="body2">
         {children}
       </Text>
     </a>

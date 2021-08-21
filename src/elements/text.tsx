@@ -1,24 +1,24 @@
 import React, { PropsWithChildren } from 'react'
 
 interface Props {
-  id?: string
+  className?: string
   variant?: keyof typeof typography
 }
 
 export default function Text({
   children,
   variant = 'body1',
-  id = 'uiSignupElementsText',
+  className = 'uiSignupElementsText',
   ...props
 }: PropsWithChildren<Props>) {
   return (
-    <span id={id} style={typography[variant] as any} {...props}>
+    <span className={className} style={typography[variant]} {...props}>
       {children}
     </span>
   )
 }
 
-const typography = {
+export const typography = {
   h1: {
     fontFamily: 'Eina04',
     fontSize: '50px',
@@ -192,4 +192,4 @@ const typography = {
     lineHeight: 'normal',
     letterSpacing: '-0.11px',
   },
-}
+} as const

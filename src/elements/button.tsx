@@ -2,13 +2,14 @@ import React, { PropsWithChildren } from 'react'
 
 interface Props
   extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {}
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+  > { }
 
-export default function Button({ children, ...props }: PropsWithChildren<Props>) {
+export default function Button({ children, className, ...props }: PropsWithChildren<Props>) {
+  const classes = className ? `uiSignupElementsButton ${className}` : 'uiSignupElementsButton'
   return (
-    <button id="uiSignupElementsButton" {...props}>
+    <button className={classes} {...props}>
       <span>{children}</span>
     </button>
   )

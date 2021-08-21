@@ -35,6 +35,11 @@ class App extends React.Component<any, IAppContext> {
       organizationName: '',
       organizationEmail: '',
     },
+    embarkUser: {
+      vcode: '',
+      password: '',
+      confirmPassword: '',
+    },
 
     setContextValue: this.setContextValue,
   }

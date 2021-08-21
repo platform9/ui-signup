@@ -1,5 +1,5 @@
 import React from 'react'
-import { PropsWithContext, withAppContext } from '../context'
+import { IUser, PropsWithContext, withAppContext } from '../context'
 import Container from '../elements/container'
 import Text from '../elements/text'
 import Link from '../elements/link'
@@ -8,32 +8,104 @@ import Input from '../elements/input'
 import Button from '../elements/button'
 import Icon from '../elements/icon'
 import { ViewPanes } from '../constants'
+import { isValidString, isLowerCase, isValidEmail } from '../elements/forms/validators'
+import FormValidator from '../elements/forms'
 
 interface Props {}
+
+
+const formValidator = new FormValidator<IUser>({
+  firstName: [
+    {
+      message: 'Please enter your first name',
+      validator: isValidString,
+    },
+  ],
+  lastName: [
+    {
+      message: 'Please enter your last name',
+      validator: isValidString,
+    },
+  ],
+  organizationName: [
+    {
+      message: 'Please enter your organization name',
+      validator: isValidString,
+    },
+    {
+      message: 'Organization name must be lowercase only',
+      validator: isLowerCase,
+    },
+  ],
+  organizationEmail: [
+    {
+      message: 'Please enter your email address',
+      validator: isValidString,
+    },
+    {
+      message: 'Please enter a valid email address',
+      validator: isValidEmail,
+    },
+  ],
+})
+
 const nextView = ViewPanes.ConfirmAndDeploy
-function CreateUser({ setContextValue, user, ...props }: PropsWithContext<Props>) {
-  const handleClick = () => {
-    setContextValue({ activePane: nextView })
-  }
+function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithContext<Props>) {
   const handleInputChange = (e) => {
     setContextValue({ user: { ...user, [e.target.name]: e.target.value } })
   }
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    const { foundErrors, hasError } = formValidator.validate(user)
+    setContextValue({ formErrors: foundErrors })
+    if (hasError) {
+      return false
+    }
+
+    // TODO make request here if valid and we have a token
+    setContextValue({ activePane: nextView })
+    return true
+  }
   return (
     <Container rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}>
-      <Text variant="h3" id="uiSignupElementsTextBlue200">
-        Tell us more about yourself
-      </Text>
-      <Input name="firstName" placeholder="First Name" onChange={handleInputChange} />
-      <Input name="lastName" placeholder="Last Name" onChange={handleInputChange} />
-      <Input name="organizationName" placeholder="Organization Name" onChange={handleInputChange} />
-      <Input
-        name="organizationEmail"
-        placeholder="Organization Email"
-        onChange={handleInputChange}
-      />
-      <Button onClick={handleClick}>
-        Continue <Icon icon="arrow-right" />
-      </Button>
+      <form id="uiSignupPagesCreateUserForm" onSubmit={handleFormSubmit}>
+        <Text variant="h3" className="uiSignupElementsTextBlue200">
+          Tell us more about yourself
+        </Text>
+        <div>
+          <Input
+            accessor={user}
+            name="firstName"
+            placeholder="First Name"
+            onChange={handleInputChange}
+            error={formErrors.firstName}
+          />
+          <Input
+            accessor={user}
+            name="lastName"
+            placeholder="Last Name"
+            onChange={handleInputChange}
+            error={formErrors.lastName}
+          />
+          <Input
+            accessor={user}
+            name="organizationName"
+            placeholder="Organization Name"
+            onChange={handleInputChange}
+            error={formErrors.organizationName}
+          />
+          <Input
+            accessor={user}
+            name="organizationEmail"
+            placeholder="Organization Email"
+            onChange={handleInputChange}
+            error={formErrors.organizationEmail}
+          />
+        </div>
+        <Button type="submit">
+          Continue <Icon icon="arrow-right" />
+        </Button>
+      </form>
       <Link onClick={() => setContextValue({ showUnsureModal: true })}>
         Not ready to deploy yet?
       </Link>
