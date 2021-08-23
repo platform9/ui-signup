@@ -22,10 +22,18 @@ const calloutItems = [
 const nextView = ViewPanes.CreateUser
 
 function GettingStarted({ children, deployTarget, setContextValue }: PropsWithContext<Props>) {
+  const [error, setError] = React.useState(false)
   const handleClick = () => {
     if (deployTarget) {
+      // setError(false)
       setContextValue({ activePane: nextView })
+    } else {
+      setError(true)
     }
+  }
+  const handleChange = (deployTarget) => {
+    if (error) setError(false)
+    setContextValue({ deployTarget })
   }
   return (
     <Container>
@@ -42,24 +50,39 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
           </div>
         ))}
       </div>
-      <footer id="uiSignupPagesGettingStartedFooter">
+      <footer
+        id="uiSignupPagesGettingStartedFooter"
+        className={error ? 'uiSignupPagesGettingStartedFooterError' : ''}
+      >
         <Text variant="subtitle1">Are you ready to experience Managed Kubernetes?</Text>
         <div id="uiSignupPagesGettingStartedForm">
           <div>
             <CheckBox
               name={DeployTargets.Import}
               checked={deployTarget === DeployTargets.Import}
-              onChange={() => setContextValue({ deployTarget: DeployTargets.Import })}
+              onChange={() => handleChange(DeployTargets.Import)}
               label="I have an existing EKS, AKs or GKE cluser to import."
             />
             <CheckBox
               name={DeployTargets.Create}
               checked={deployTarget === DeployTargets.Create}
-              onChange={() => setContextValue({ deployTarget: DeployTargets.Create })}
+              onChange={() => handleChange(DeployTargets.Create)}
               label="I have VMs, servers or public cloud to deploy to."
             />
           </div>
-          <Button onClick={handleClick}>Continue</Button>
+          <div>
+            <Button className="uiSignupPagesGettingStartedFooterErrorMessage" onClick={handleClick}>
+              Continue
+            </Button>
+              <Text
+                variant="caption2"
+                className="uiSignupPagesGettingStartedFooterErrorMessage uiSignupElementsTextRed500"
+              >
+                {error ? 'Please choose an option' : ''}
+                &nbsp;
+              </Text>
+            
+          </div>
         </div>
         <Link onClick={() => setContextValue({ showUnsureModal: true })}>
           Not ready to deploy yet?

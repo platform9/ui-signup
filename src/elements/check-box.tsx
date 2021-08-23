@@ -10,7 +10,7 @@ interface Props
 export default function CheckBox({ label, name, ...props }: Props) {
   const id = `uiSignupElementsCheckBox_${name}`
   return (
-    <div id="uiSignupElementsCheckBox">
+    <div className="uiSignupElementsCheckBox">
       <input id={id} type="checkbox" {...props} />
       <label htmlFor={id}>
         <Text>{label}</Text>

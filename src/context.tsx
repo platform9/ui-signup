@@ -7,12 +7,20 @@ export interface IUser {
   organizationName?: string
   organizationEmail?: string
 }
+export interface IEmbarkUser {
+  vcode?: string
+  password?: string
+  confirmPassword?: string
+}
+
 export interface IAppState {
   showUnsureModal?: boolean
   activePane?: ViewPanes
   deployTarget?: DeployTargets
 
-  user?: IUser
+  user: IUser
+  embarkUser: IEmbarkUser
+  formErrors: { [key: string]: string }
 }
 
 export const appDefaultState: IAppContext = {
@@ -23,10 +31,12 @@ export const appDefaultState: IAppContext = {
   deployTarget: undefined,
   showUnsureModal: false,
   user: {},
+  embarkUser: {},
+  formErrors: {},
 }
 
 export interface IAppContext extends IAppState {
-  setContextValue: (payload: Pick<IAppState, keyof IAppState>) => void
+  setContextValue: (payload: Partial<Pick<IAppState, keyof IAppState>>) => void
 }
 
 export type PropsWithContext<T> = IAppContext & T
