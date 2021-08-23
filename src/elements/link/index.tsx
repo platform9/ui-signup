@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react'
-import Text from './text'
+import Text from '../text'
+import './style.css'
 
 interface Props
   extends React.DetailedHTMLProps<

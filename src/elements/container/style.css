@@ -1,0 +1,88 @@
+#uiSignupElementsContainer {
+  position: relative;
+  width: 1120px;
+  height: 600px;
+  display: grid;
+  justify-items: stretch;
+  align-items: stretch;
+  border-radius: 16px;
+  border: solid 1px var(--grey-500);
+  overflow: hidden;
+}
+.uiSignupElementsContainerBackArrow {
+  color: var(--grey-000);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  cursor: pointer;
+}
+#uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+  padding: 0;
+  grid-template-columns: 50% 50%;
+}
+#uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
+  padding: 40px 48px 50px 48px;
+  width: calc(1120px - 48px - 48px);
+  height: calc(600px - 60px - 32px);
+  grid-auto-flow: row;
+}
+
+#uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) > section {
+  display: grid;
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+#uiSignupElementsContainer.uiSignupElementsContainer-full-width > section {
+  background-color: var(--grey-800);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 45px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+#uiSignupElementsContainer > aside {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+#uiSignupElementsContainerUnsureModal {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  z-index: 1000;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#uiSignupElementsContainerUnsureModalBackdrop {
+  background-color: var(--grey-900);
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#uiSignupElementsContainerUnsureModalContent {
+  z-index: 1000;
+  background-color: var(--grey-700);
+  width: calc(400px - 48px);
+  display: grid;
+  gap: 24px;
+  padding: 32px 24px;
+
+  border-radius: 5px;
+  box-shadow: 2px 6px 8px 6px rgba(13, 13, 40, 0.5);
+  border: solid 1px var(--grey-500);
+}
+
+#uiSignupElementsContainerUnsureModalContent footer {
+  padding-top: 16px;
+}

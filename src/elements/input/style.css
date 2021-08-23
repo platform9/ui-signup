@@ -1,0 +1,12 @@
+.uiSignupElementsInput {
+  background: transparent;
+  height: 50px;
+  border: 1px solid var(--grey-000);
+  padding-left: 16px;
+  color: var(--grey-000);
+}
+.uiSignupElementsInputContainer {
+  display: grid;
+  grid-auto-flow: row;
+  padding-top: 6px;
+}

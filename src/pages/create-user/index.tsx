@@ -1,18 +1,19 @@
 import React from 'react'
-import { IUser, PropsWithContext, withAppContext } from '../context'
-import Container from '../elements/container'
-import Text from '../elements/text'
-import Link from '../elements/link'
-import managementPlaneIllustration from '../management-plane.svg'
-import Input from '../elements/input'
-import Button from '../elements/button'
-import Icon from '../elements/icon'
-import { ViewPanes } from '../constants'
-import { isValidString, isLowerCase, isValidEmail } from '../elements/forms/validators'
-import FormValidator from '../elements/forms'
+import { IUser, PropsWithContext, withAppContext } from '../../context'
+import Container from '../../elements/container'
+import Text from '../../elements/text'
+import Link from '../../elements/link'
+import managementPlaneIllustration from '../../management-plane.svg'
+import Input from '../../elements/input'
+import Button from '../../elements/button'
+import Icon from '../../elements/icon'
+import { ViewPanes } from '../../constants'
+import { isValidString, isLowerCase, isValidEmail } from '../../elements/forms/validators'
+import FormValidator from '../../elements/forms'
+import { navigate } from '../../actions'
+import './style.css'
 
 interface Props {}
-
 
 const formValidator = new FormValidator<IUser>({
   firstName: [
@@ -63,11 +64,14 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
     }
 
     // TODO make request here if valid and we have a token
-    setContextValue({ activePane: nextView })
+    navigate(nextView)
     return true
   }
   return (
-    <Container rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}>
+    <Container
+      rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}
+      previousPane={ViewPanes.GettingStarted}
+    >
       <form id="uiSignupPagesCreateUserForm" onSubmit={handleFormSubmit}>
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           Tell us more about yourself
@@ -103,7 +107,7 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
           />
         </div>
         <Button type="submit">
-          Continue <Icon icon="arrow-right" />
+          Continue <Icon icon="right-arrow" />
         </Button>
       </form>
       <Link onClick={() => setContextValue({ showUnsureModal: true })}>

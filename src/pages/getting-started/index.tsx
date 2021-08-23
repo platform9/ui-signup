@@ -1,12 +1,13 @@
 import React, { PropsWithChildren } from 'react'
-import Container from '../elements/container'
-import Text from '../elements/text'
-import Icon from '../elements/icon'
-import CheckBox from '../elements/check-box'
-import Button from '../elements/button'
-import Link from '../elements/link'
-import { PropsWithContext, withAppContext } from '../context'
-import { ViewPanes, DeployTargets } from '../constants'
+import Container from '../../elements/container'
+import Text from '../../elements/text'
+import CheckBox from '../../elements/check-box'
+import Button from '../../elements/button'
+import Link from '../../elements/link'
+import { PropsWithContext, withAppContext } from '../../context'
+import { ViewPanes, DeployTargets } from '../../constants'
+import './style.css'
+import { navigate } from '../../actions'
 
 type Props = PropsWithChildren<{}>
 
@@ -25,8 +26,7 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
   const [error, setError] = React.useState(false)
   const handleClick = () => {
     if (deployTarget) {
-      // setError(false)
-      setContextValue({ activePane: nextView })
+      navigate(nextView)
     } else {
       setError(true)
     }
@@ -42,19 +42,13 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
         <br />
         On Premises, AWS, or Azure
       </Text>
-      <div id="uiSignupPagesGettingStartedCallouts">
-        {calloutItems.map((item, index) => (
-          <div key={index} id="uiSignupPagesGettingStartedCalloutItem">
-            <Icon icon="check" size={25} color="Green500" />
-            <Text variant="subtitle1">{item}</Text>
-          </div>
-        ))}
-      </div>
       <footer
         id="uiSignupPagesGettingStartedFooter"
         className={error ? 'uiSignupPagesGettingStartedFooterError' : ''}
       >
-        <Text variant="subtitle1">Are you ready to experience Managed Kubernetes?</Text>
+        <Text variant="subtitle1" className="uiSignupElementsTextBlue200">
+          Are you ready to experience Managed Kubernetes?
+        </Text>
         <div id="uiSignupPagesGettingStartedForm">
           <div>
             <CheckBox
@@ -74,20 +68,26 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
             <Button className="uiSignupPagesGettingStartedFooterErrorMessage" onClick={handleClick}>
               Continue
             </Button>
-              <Text
-                variant="caption2"
-                className="uiSignupPagesGettingStartedFooterErrorMessage uiSignupElementsTextRed500"
-              >
-                {error ? 'Please choose an option' : ''}
-                &nbsp;
-              </Text>
-            
+            <Text
+              variant="caption2"
+              className="uiSignupPagesGettingStartedFooterErrorMessage uiSignupElementsTextRed500"
+            >
+              {error ? 'Please choose an option' : ''}
+              &nbsp;
+            </Text>
           </div>
         </div>
         <Link onClick={() => setContextValue({ showUnsureModal: true })}>
           Not ready to deploy yet?
         </Link>
       </footer>
+      <ul id="uiSignupPagesGettingStartedCallouts">
+        {calloutItems.map((item, index) => (
+          <li key={index} id="uiSignupPagesGettingStartedCalloutItem">
+            <Text variant="subtitle1">{item}</Text>
+          </li>
+        ))}
+      </ul>
       {children}
     </Container>
   )

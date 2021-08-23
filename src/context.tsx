@@ -15,7 +15,7 @@ export interface IEmbarkUser {
 
 export interface IAppState {
   showUnsureModal?: boolean
-  activePane?: ViewPanes
+  activePane: ViewPanes
   deployTarget?: DeployTargets
 
   user: IUser
@@ -27,7 +27,7 @@ export const appDefaultState: IAppContext = {
   setContextValue: (payload) => {
     console.error('AppContext not found')
   },
-  activePane: undefined,
+  activePane: ViewPanes.GettingStarted,
   deployTarget: undefined,
   showUnsureModal: false,
   user: {},
