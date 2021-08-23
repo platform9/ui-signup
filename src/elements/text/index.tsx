@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import './style.css'
 
 interface Props {
   className?: string

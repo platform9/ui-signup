@@ -1,5 +1,6 @@
 import React from 'react'
-import Text from './text'
+import Text from '../text'
+import './style.css'
 
 interface Props
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {

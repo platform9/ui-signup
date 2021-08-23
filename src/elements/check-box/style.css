@@ -1,0 +1,11 @@
+.uiSignupElementsCheckBox {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  gap: 8px;
+}
+.uiSignupElementsCheckBox.uiSignupError input::after {
+  content: '';
+  display: block;
+  background-color: var(--red-500);
+}

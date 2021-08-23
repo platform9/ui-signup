@@ -1,14 +1,15 @@
 import React from 'react'
-import Container from '../elements/container'
-import Text from '../elements/text'
-import Input from '../elements/input'
-import Button from '../elements/button'
-import Link from '../elements/link'
-import FormValidator from '../elements/forms'
-import { isValidString, isSixDigits, isMatchingValue } from '../elements/forms/validators'
-import managementPlaneIllustration from '../management-plane.svg'
-import { IEmbarkUser, PropsWithContext, withAppContext } from '../context'
-interface Props { }
+import Container from '../../elements/container'
+import Text from '../../elements/text'
+import Input from '../../elements/input'
+import Button from '../../elements/button'
+import Link from '../../elements/link'
+import FormValidator from '../../elements/forms'
+import { isValidString, isSixDigits, isMatchingValue } from '../../elements/forms/validators'
+import managementPlaneIllustration from '../../management-plane.svg'
+import { IEmbarkUser, PropsWithContext, withAppContext } from '../../context'
+import { ViewPanes } from '../../constants'
+interface Props {}
 
 const formValidator = new FormValidator<IEmbarkUser>({
   vcode: [
@@ -39,7 +40,12 @@ const formValidator = new FormValidator<IEmbarkUser>({
   ],
 })
 
-function ConfirmAndDeploy({ setContextValue, embarkUser, formErrors, ...props }: PropsWithContext<Props>) {
+function ConfirmAndDeploy({
+  setContextValue,
+  embarkUser,
+  formErrors,
+  ...props
+}: PropsWithContext<Props>) {
   const handleInputChange = (e) => {
     setContextValue({ embarkUser: { ...embarkUser, [e.target.name]: e.target.value } })
   }
@@ -55,18 +61,19 @@ function ConfirmAndDeploy({ setContextValue, embarkUser, formErrors, ...props }:
     return true
   }
   const handleResendVerificationCode = () => {
-
+    // TODO handle resend here
   }
   return (
-    <Container rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}>
+    <Container
+      rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}
+      previousPane={ViewPanes.CreateUser}
+    >
       <form id="uiSignupPagesConfirmAndDeployForm" onSubmit={handleFormSubmit}>
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           You're almost done!
         </Text>
         <div>
-          <Text variant="subtitle2">
-            Enter the verification code we sent to your email:
-          </Text>
+          <Text variant="subtitle2">Enter the verification code we sent to your email:</Text>
           <Input
             accessor={embarkUser}
             name="vcode"
@@ -74,13 +81,9 @@ function ConfirmAndDeploy({ setContextValue, embarkUser, formErrors, ...props }:
             onChange={handleInputChange}
             error={formErrors.vcode}
           />
-          <Link onClick={handleResendVerificationCode}>
-            Resend verification code
-          </Link>
+          <Link onClick={handleResendVerificationCode}>Resend verification code</Link>
           <div style={{ height: 18 }} />
-          <Text variant="subtitle2">
-            Create a Password
-          </Text>
+          <Text variant="subtitle2">Create a Password</Text>
           <Input
             accessor={embarkUser}
             name="password"
@@ -98,9 +101,7 @@ function ConfirmAndDeploy({ setContextValue, embarkUser, formErrors, ...props }:
             error={formErrors.confirmPassword}
           />
         </div>
-        <Button type="submit">
-          Deploy Free Trial Now
-        </Button>
+        <Button type="submit">Deploy Free Trial Now</Button>
       </form>
     </Container>
   )

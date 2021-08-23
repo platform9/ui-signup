@@ -1,0 +1,12 @@
+.uiSignupElementsText {
+  color: var(--grey-000);
+}
+.uiSignupElementsTextBlue200 {
+  color: var(--blue-200);
+}
+.uiSignupElementsTextBlue500 {
+  color: var(--blue-500);
+}
+.uiSignupElementsTextRed500 {
+  color: var(--red-500);
+}
