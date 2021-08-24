@@ -100,7 +100,7 @@ function ConfirmAndDeploy({
       if (mounted.current) {
         setResendVerifyMessage(defaultVerifyState)
       }
-    }, 3000)
+    }, 5000)
   }
   return (
     <Container
@@ -127,7 +127,7 @@ function ConfirmAndDeploy({
           />
           {!!resendVerifyMessage ? (
             <Text
-              variant="body2"
+              variant="caption1"
               className={`uiSignupElementsText${
                 resendVerifyMessage.success ? 'Green500' : 'Red500'
               }`}
