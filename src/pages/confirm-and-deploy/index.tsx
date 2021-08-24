@@ -93,7 +93,7 @@ function ConfirmAndDeploy({
     } else {
       setResendVerifyMessage({
         success: true,
-        message: response.data?.message || 'Verification code sent',
+        message: 'Verification code sent',
       })
     }
     setTimeout(() => {
