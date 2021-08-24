@@ -78,7 +78,7 @@ function ConfirmAndDeploy({
     if (!response.success) {
       setError(response.data?.message || response.data)
     } else {
-      const fqdn = response.data?.fqdn
+      const fqdn = response.data?.region_url
       window.open(`${fqdn}/ui/pmkft/login`, '_blank')
     }
     return true

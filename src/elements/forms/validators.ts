@@ -9,7 +9,7 @@ export const isValidEmail = (email: string = ''): boolean => {
 }
 
 export const isSixDigits = (str: string = ''): boolean => {
-  return /^\d{6}$/.test(str)
+  return /^.{6}$/.test(str)
 }
 export const isMatchingValue = (key) => (value, formValues) => {
   return value === formValues[key]

@@ -55,7 +55,9 @@ class App extends React.Component<any, IAppContext> {
 
   setContextValue = (payload) => {
     this.setState(payload, () => {
-      syncState(this.state)
+      if (this.state.activePane !== ViewPanes.ConfirmAndDeploy) {
+        syncState(this.state)
+      }
     })
   }
 
