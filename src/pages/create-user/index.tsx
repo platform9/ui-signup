@@ -10,7 +10,7 @@ import Icon from '../../elements/icon'
 import { ViewPanes } from '../../constants'
 import { isValidString, isLowerCase, isValidEmail } from '../../elements/forms/validators'
 import FormValidator from '../../elements/forms'
-import { navigate } from '../../actions'
+import { createEmbarkUser, navigate } from '../../net/actions'
 import './style.css'
 
 interface Props {}
@@ -52,19 +52,25 @@ const formValidator = new FormValidator<IUser>({
 
 const nextView = ViewPanes.ConfirmAndDeploy
 function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithContext<Props>) {
+  const [error, setError] = React.useState('')
   const handleInputChange = (e) => {
     setContextValue({ user: { ...user, [e.target.name]: e.target.value } })
   }
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
+    error && setError('')
     const { foundErrors, hasError } = formValidator.validate(user)
     setContextValue({ formErrors: foundErrors })
     if (hasError) {
       return false
     }
 
-    // TODO make request here if valid and we have a token
-    navigate(nextView)
+    const response = await createEmbarkUser(user)
+    if (response.success) {
+      navigate(nextView)
+    } else {
+      setError(response.data?.message || response.data)
+    }
     return true
   }
   return (
@@ -76,6 +82,11 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           Tell us more about yourself
         </Text>
+        {error && (
+          <Text variant="caption2" className="uiSignupElementsTextRed500">
+            {error}
+          </Text>
+        )}
         <div>
           <Input
             accessor={user}

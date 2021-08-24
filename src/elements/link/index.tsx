@@ -11,7 +11,7 @@ interface Props
 export default function Link({ children, ...props }: PropsWithChildren<Props>) {
   return (
     <a className="uiSignupElementsLink" {...props}>
-      <Text className="uiSignupElementsTextBlue500" variant="body2">
+      <Text className="uiSignupElementsTextBlue500" variant="caption1">
         {children}
       </Text>
     </a>
