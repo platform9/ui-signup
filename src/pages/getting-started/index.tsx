@@ -7,7 +7,7 @@ import Link from '../../elements/link'
 import { PropsWithContext, withAppContext } from '../../context'
 import { ViewPanes, DeployTargets } from '../../constants'
 import './style.css'
-import { navigate } from '../../actions'
+import { navigate } from '../../net/actions'
 
 type Props = PropsWithChildren<{}>
 

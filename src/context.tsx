@@ -2,10 +2,10 @@ import React from 'react'
 import { ViewPanes, DeployTargets } from './constants'
 
 export interface IUser {
-  firstName?: string
-  lastName?: string
-  organizationName?: string
-  organizationEmail?: string
+  firstName: string
+  lastName: string
+  organizationName: string
+  organizationEmail: string
 }
 export interface IEmbarkUser {
   vcode?: string
@@ -30,7 +30,7 @@ export const appDefaultState: IAppContext = {
   activePane: ViewPanes.GettingStarted,
   deployTarget: undefined,
   showUnsureModal: false,
-  user: {},
+  user: {} as any,
   embarkUser: {},
   formErrors: {},
 }

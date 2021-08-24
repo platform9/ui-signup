@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { navigate } from '../../actions'
+import { navigate } from '../../net/actions'
 import { ViewPanes } from '../../constants'
 import { PropsWithContext, withAppContext } from '../../context'
 import Button from '../button'
