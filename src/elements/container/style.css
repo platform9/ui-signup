@@ -9,11 +9,14 @@
   border: solid 1px var(--grey-500);
   overflow: hidden;
 }
+#uiSignupElementsContainer aside img {
+  max-width: 400px;
+}
 .uiSignupElementsContainerBackArrow {
   color: var(--grey-000);
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 4px;
+  left: 16px;
   cursor: pointer;
 }
 #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
@@ -22,8 +25,6 @@
 }
 #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
   padding: 40px 48px 50px 48px;
-  width: calc(1120px - 48px - 48px);
-  height: calc(600px - 60px - 32px);
   grid-auto-flow: row;
 }
 
@@ -73,7 +74,7 @@
 #uiSignupElementsContainerUnsureModalContent {
   z-index: 1000;
   background-color: var(--grey-700);
-  width: calc(400px - 48px);
+  width: 400px;
   display: grid;
   gap: 24px;
   padding: 32px 24px;
@@ -85,4 +86,7 @@
 
 #uiSignupElementsContainerUnsureModalContent footer {
   padding-top: 16px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 16px;
 }

@@ -65,7 +65,11 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
             />
           </div>
           <div>
-            <Button className="uiSignupPagesGettingStartedFooterErrorMessage" onClick={handleClick}>
+            <Button
+              className="uiSignupPagesGettingStartedFooterErrorMessage"
+              onClick={handleClick}
+              nextArrow
+            >
               Continue
             </Button>
             <Text

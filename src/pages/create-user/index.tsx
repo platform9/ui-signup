@@ -52,39 +52,47 @@ const formValidator = new FormValidator<IUser>({
 
 const nextView = ViewPanes.ConfirmAndDeploy
 function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithContext<Props>) {
-  const [error, setError] = React.useState('')
+  const [feedbackState, setFeedbackState] = React.useState({
+    error: '',
+    working: false,
+  })
   const handleInputChange = (e) => {
     setContextValue({ user: { ...user, [e.target.name]: e.target.value } })
   }
   const handleFormSubmit = async (e) => {
     e.preventDefault()
-    error && setError('')
     const { foundErrors, hasError } = formValidator.validate(user)
     setContextValue({ formErrors: foundErrors })
     if (hasError) {
       return false
     }
 
+    setFeedbackState({ error: '', working: true })
     const response = await createEmbarkUser(user)
     if (response.success) {
       navigate(nextView)
     } else {
-      setError(response.data?.message || response.data)
+      setFeedbackState({ error: response.data?.message || response.data, working: false })
     }
     return true
   }
   return (
     <Container
-      rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}
+      rightPanel={
+        <img
+          alt="management-plane"
+          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/01/graphic_platform9-managed-kubernetes_planes.svg"
+        />
+      }
       previousPane={ViewPanes.GettingStarted}
     >
-      <form id="uiSignupPagesCreateUserForm" onSubmit={handleFormSubmit}>
+      <form id="uiSignupPagesCreateUserForm">
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           Tell us more about yourself
         </Text>
-        {error && (
+        {feedbackState.error && (
           <Text variant="caption2" className="uiSignupElementsTextRed500">
-            {error}
+            {feedbackState.error}
           </Text>
         )}
         <div>
@@ -117,8 +125,8 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
             error={formErrors.organizationEmail}
           />
         </div>
-        <Button type="submit">
-          Continue <Icon icon="right-arrow" />
+        <Button onClick={handleFormSubmit} nextArrow disabled={feedbackState.working}>
+          Continue
         </Button>
       </form>
       <Link onClick={() => setContextValue({ showUnsureModal: true })}>

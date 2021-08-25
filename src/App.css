@@ -27,18 +27,16 @@
 }
 
 #uiSignupAppMainEntry {
-  width: 100vw;
-  height: calc(100vh - 40px);
   background-color: var(--grey-900);
   display: grid;
   justify-content: center;
   grid-auto-flow: row;
   grid-auto-rows: max-content;
-  gap: 32px;
-  padding-top: 40px;
+  gap: 2rem;
+  padding-top: 7.5rem;
 }
 
 .uiSignupAppMainTitle {
   color: var(--grey-000);
-  margin-left: 16px;
+  margin-left: 1rem;
 }

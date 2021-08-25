@@ -52,7 +52,9 @@ function UnsureModal({ onClose }) {
           demo now.
         </Text>
         <footer>
-          <Button onClick={onClose}>Explore Later</Button>
+          <Button onClick={onClose} variant="secondary">
+            Explore Later
+          </Button>
           <Button>Go To Live Demo</Button>
         </footer>
       </div>

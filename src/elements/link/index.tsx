@@ -1,17 +1,16 @@
 import React, { PropsWithChildren } from 'react'
-import Text from '../text'
+import Text, { TextProps } from '../text'
 import './style.css'
 
 interface Props
-  extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  > {}
+  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+  variant?: TextProps['variant']
+}
 
-export default function Link({ children, ...props }: PropsWithChildren<Props>) {
+export default function Link({ children, variant = 'body2', ...props }: PropsWithChildren<Props>) {
   return (
     <a className="uiSignupElementsLink" {...props}>
-      <Text className="uiSignupElementsTextBlue500" variant="caption1">
+      <Text className="uiSignupElementsTextBlue500" variant={variant}>
         {children}
       </Text>
     </a>

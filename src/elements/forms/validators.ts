@@ -8,7 +8,7 @@ export const isValidEmail = (email: string = ''): boolean => {
   return /(.{2,}@.{2,}\..{2,})/.test(email)
 }
 
-export const isSixDigits = (str: string = ''): boolean => {
+export const isSixCharacters = (str: string = ''): boolean => {
   return /^.{6}$/.test(str)
 }
 export const isMatchingValue = (key) => (value, formValues) => {
