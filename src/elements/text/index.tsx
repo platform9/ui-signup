@@ -4,16 +4,20 @@ import './style.css'
 export interface TextProps {
   className?: string
   variant?: keyof typeof typography
+  fixWhitespace?: boolean
 }
 
 export default function Text({
   children,
   variant = 'body1',
   className = 'uiSignupElementsTextGrey000',
+  fixWhitespace = true,
   ...props
 }: PropsWithChildren<TextProps>) {
+  const whitespaceClass = fixWhitespace ? 'uiSignupElementsTextWhitespaceFix' : ''
+  const classes = `uiSignupElementsText ${whitespaceClass} ${className}`.trim()
   return (
-    <span className={`uiSignupElementsText ${className}`} style={typography[variant]} {...props}>
+    <span className={classes} style={typography[variant]} {...props}>
       {children}
     </span>
   )
@@ -58,7 +62,7 @@ export const typography = {
   },
   inputPlaceholder: {
     fontFamily: 'Eina04-Regular',
-    fontSize: '14px',
+    fontSize: '18px',
     fontWeight: 'normal',
     fontStretch: 'normal',
     fontStyle: 'normal',

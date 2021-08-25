@@ -9,24 +9,48 @@ interface Props
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   name: string
   accessor: { [key: string]: any }
+  label: string
   error?: string
+  helpText?: string
+  info?: string
 }
 
-function Input({ accessor, error, ...props }: PropsWithContext<Props>) {
+function Input({ accessor, label, error, info, helpText, ...props }: PropsWithContext<Props>) {
   const rest = getElementProps(props)
   return (
-    <div className="uiSignupElementsInputContainer">
+    <div className="uiSignupElementsInputContainer floating-label-wrap">
       <input
         id={`uiSignupElementsInput${props.name}`}
-        className="uiSignupElementsInput"
+        className="uiSignupElementsInput floating-label-field"
         value={accessor[props.name]}
         style={{ ...typography.inputPlaceholder }}
+        placeholder={label}
         {...rest}
       />
+      <label htmlFor="field-1" className="floating-label">
+        <Text variant="sidenav" className="" fixWhitespace={false}>
+          {label}
+        </Text>
+      </label>
+
+      {info && <InfoTooltip message={info} />}
       <Text className="uiSignupElementsTextRed500" variant="caption2">
         {error || ''}&nbsp;
       </Text>
+      {info && (
+        <Text className="uiSignupElementsTextGrey000" variant="caption2">
+          {info || ''}&nbsp;
+        </Text>
+      )}
     </div>
+  )
+}
+
+const InfoTooltip = ({ message }) => {
+  return (
+    <i>
+      <div className="uiSignupElementsInputInfoTooltip">{message}</div>
+    </i>
   )
 }
 

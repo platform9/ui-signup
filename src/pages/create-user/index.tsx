@@ -81,7 +81,7 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
       rightPanel={
         <img
           alt="management-plane"
-          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/01/graphic_platform9-managed-kubernetes_planes.svg"
+          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/08/management-plane.svg"
         />
       }
       previousPane={ViewPanes.GettingStarted}
@@ -99,28 +99,28 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
           <Input
             accessor={user}
             name="firstName"
-            placeholder="First Name"
+            label="First Name"
             onChange={handleInputChange}
             error={formErrors.firstName}
           />
           <Input
             accessor={user}
             name="lastName"
-            placeholder="Last Name"
+            label="Last Name"
             onChange={handleInputChange}
             error={formErrors.lastName}
           />
           <Input
             accessor={user}
             name="organizationName"
-            placeholder="Organization Name"
+            label="Organization Name"
             onChange={handleInputChange}
             error={formErrors.organizationName}
           />
           <Input
             accessor={user}
             name="organizationEmail"
-            placeholder="Organization Email"
+            label="Organization Email"
             onChange={handleInputChange}
             error={formErrors.organizationEmail}
           />

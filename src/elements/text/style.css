@@ -1,6 +1,8 @@
 .uiSignupElementsText {
-  /* account for the fonts extra whitespace at the bottom */
   position: relative;
+}
+.uiSignupElementsTextWhitespaceFix {
+  /* account for the fonts extra whitespace at the bottom */
   top: 3px;
 }
 
