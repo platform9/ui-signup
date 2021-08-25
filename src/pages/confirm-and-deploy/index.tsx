@@ -66,7 +66,7 @@ const formValidator = new FormValidator<IEmbarkUser>({
   confirmPassword: [
     {
       id: 'confirm-password-empty',
-      message: 'Please enter your password',
+      message: 'Please confirm your password',
       validator: isValidString,
     },
     {
@@ -191,7 +191,7 @@ function ConfirmAndDeploy({
             label="Password"
             type="password"
             onChange={handleInputChange}
-            error={formErrors.password}
+            error={formErrors.password || formErrors.confirmPassword}
           />
           <Input
             accessor={embarkUser}
@@ -199,7 +199,6 @@ function ConfirmAndDeploy({
             label="Confirm Password"
             type="password"
             onChange={handleInputChange}
-            error={formErrors.confirmPassword}
             helpText={
               <PasswordValidatorHelp
                 formValues={embarkUser}

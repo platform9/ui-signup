@@ -23,9 +23,6 @@
   height: 16px;
   border: 1px solid var(--grey-500);
   border-radius: 2px;
-  display: grid;
-  align-items: end;
-  justify-items: center;
 }
 .uiSignupElementsCheckBoxAdornment:hover {
   background-color: rgba(0, 0, 0, 0.2);
