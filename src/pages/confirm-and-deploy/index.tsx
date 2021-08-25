@@ -110,7 +110,7 @@ function ConfirmAndDeploy({
       rightPanel={
         <img
           alt="management-plane"
-          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/01/graphic_platform9-managed-kubernetes_planes.svg"
+          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/08/management-plane.svg"
         />
       }
       previousPane={ViewPanes.CreateUser}
@@ -129,7 +129,7 @@ function ConfirmAndDeploy({
           <Input
             accessor={embarkUser}
             name="vcode"
-            placeholder="6 Digit Code"
+            label="6 Digit Code"
             onChange={handleInputChange}
             error={formErrors.vcode}
           />
@@ -152,7 +152,7 @@ function ConfirmAndDeploy({
           <Input
             accessor={embarkUser}
             name="password"
-            placeholder="Password"
+            label="Password"
             type="password"
             onChange={handleInputChange}
             error={formErrors.password}
@@ -160,7 +160,7 @@ function ConfirmAndDeploy({
           <Input
             accessor={embarkUser}
             name="confirmPassword"
-            placeholder="Confirm Password"
+            label="Confirm Password"
             type="password"
             onChange={handleInputChange}
             error={formErrors.confirmPassword}

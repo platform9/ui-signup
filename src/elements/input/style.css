@@ -1,12 +1,32 @@
 .uiSignupElementsInput {
   background: transparent;
   height: 50px;
-  border: 1px solid var(--grey-000);
+  border-color: var(--grey-200) !important;
   padding-left: 16px;
-  color: var(--grey-000);
+  color: var(--grey-000) !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  min-width: 280px;
 }
-.uiSignupElementsInputContainer {
+
+.uiSignupElementsInputContainer.floating-label-wrap {
   display: grid;
   grid-auto-flow: row;
   padding-top: 6px;
+  margin-bottom: 0 !important;
+}
+
+/* override */
+.uiSignupElementsInput.floating-label-field + .floating-label {
+  top: 20px !important;
+  background: var(--grey-800) !important;
+  color: var(--grey-500) !important;
+  text-transform: uppercase !important;
+}
+.uiSignupElementsInput.floating-label-field:focus + .floating-label,
+.uiSignupElementsInput.floating-label-field:not(:placeholder-shown) + .floating-label {
+  background: var(--grey-800) !important;
+  color: var(--grey-300) !important;
+  transform: translate(0, -20px) scale(0.9) !important;
+  padding: 0 6px !important;
 }
