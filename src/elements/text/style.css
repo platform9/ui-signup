@@ -9,6 +9,9 @@
 .uiSignupElementsTextGrey000 {
   color: var(--grey-000);
 }
+.uiSignupElementsTextGrey200 {
+  color: var(--grey-200);
+}
 .uiSignupElementsTextBlue200 {
   color: var(--blue-200);
 }

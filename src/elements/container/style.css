@@ -15,7 +15,7 @@
 .uiSignupElementsContainerBackArrow {
   color: var(--grey-000);
   position: absolute;
-  top: 4px;
+  top: 16px;
   left: 16px;
   cursor: pointer;
 }

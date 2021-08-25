@@ -1,4 +1,7 @@
 .uiSignupElementsIcon {
+  display: grid;
+  align-items: center;
+  justify-items: center;
   color: var(--grey-000);
 }
 .uiSignupElementsIconGreen500 {

@@ -18,32 +18,38 @@ interface Props {}
 const formValidator = new FormValidator<IUser>({
   firstName: [
     {
+      id: 'first-name-empty',
       message: 'Please enter your first name',
       validator: isValidString,
     },
   ],
   lastName: [
     {
+      id: 'last-name-empty',
       message: 'Please enter your last name',
       validator: isValidString,
     },
   ],
   organizationName: [
     {
+      id: 'organization-name-empty',
       message: 'Please enter your organization name',
       validator: isValidString,
     },
     {
+      id: 'organization-name-lowercase',
       message: 'Organization name must be lowercase only',
       validator: isLowerCase,
     },
   ],
   organizationEmail: [
     {
+      id: 'organization-email-empty',
       message: 'Please enter your email address',
       validator: isValidString,
     },
     {
+      id: 'organization-email-valid',
       message: 'Please enter a valid email address',
       validator: isValidEmail,
     },
@@ -116,6 +122,7 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
             label="Organization Name"
             onChange={handleInputChange}
             error={formErrors.organizationName}
+            info="The unique name used to identify your Platform9 Instance. Must be lowercase only."
           />
           <Input
             accessor={user}
@@ -123,6 +130,7 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
             label="Organization Email"
             onChange={handleInputChange}
             error={formErrors.organizationEmail}
+            info="Your work email to use as your account login."
           />
         </div>
         <Button onClick={handleFormSubmit} nextArrow disabled={feedbackState.working}>

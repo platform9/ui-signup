@@ -1,6 +1,7 @@
 import React from 'react'
 import { PropsWithContext, withAppContext } from '../../context'
 import { getElementProps } from '../../helpers'
+import Icon from '../icon'
 import Text, { typography } from '../text'
 import './style.css'
 
@@ -11,7 +12,7 @@ interface Props
   accessor: { [key: string]: any }
   label: string
   error?: string
-  helpText?: string
+  helpText?: string | JSX.Element
   info?: string
 }
 
@@ -37,9 +38,9 @@ function Input({ accessor, label, error, info, helpText, ...props }: PropsWithCo
       <Text className="uiSignupElementsTextRed500" variant="caption2">
         {error || ''}&nbsp;
       </Text>
-      {info && (
+      {helpText && (
         <Text className="uiSignupElementsTextGrey000" variant="caption2">
-          {info || ''}&nbsp;
+          {helpText || ''}
         </Text>
       )}
     </div>
@@ -48,9 +49,14 @@ function Input({ accessor, label, error, info, helpText, ...props }: PropsWithCo
 
 const InfoTooltip = ({ message }) => {
   return (
-    <i>
-      <div className="uiSignupElementsInputInfoTooltip">{message}</div>
-    </i>
+    <div className="uiSignupElementsInputInfoIconContainer">
+      <Icon icon="info" size={18} className="uiSignupElementsInputInfoIcon" />
+      <div className="uiSignupElementsInputInfoTooltip">
+        <Text variant="caption3" fixWhitespace={false}>
+          {message}
+        </Text>
+      </div>
+    </div>
   )
 }
 
