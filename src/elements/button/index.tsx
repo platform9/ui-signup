@@ -1,16 +1,36 @@
 import React, { PropsWithChildren } from 'react'
+import Icon from '../icon'
+import Text from '../text'
 import './style.css'
 
 interface Props
   extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {}
+    React.ButtonHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  > {
+  variant?: 'primary' | 'secondary'
+  nextArrow?: boolean
+}
 
-export default function Button({ children, className = '', ...props }: PropsWithChildren<Props>) {
+export default function Button({
+  children,
+  className = '',
+  variant = 'primary',
+  disabled = false,
+  nextArrow = false,
+  onClick,
+  ...props
+}: PropsWithChildren<Props>) {
+  const disabledClass = disabled ? 'disabled' : ''
+  const nextArrowClass = nextArrow ? 'uiSignupElementsButtonArrow' : ''
   return (
-    <button className={`uiSignupElementsButton ${className}`} {...props}>
-      <span>{children}</span>
-    </button>
+    <a
+      className={`uiSignupElementsButton btn btn-${variant} ${disabledClass} ${nextArrowClass} ${className}`}
+      {...props}
+      onClick={!disabled ? onClick : undefined}
+    >
+      <Text variant="buttonPrimary">{children}</Text>
+      {nextArrow && <Icon icon="right-arrow" />}
+    </a>
   )
 }

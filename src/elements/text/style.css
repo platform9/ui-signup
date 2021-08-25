@@ -1,4 +1,10 @@
 .uiSignupElementsText {
+  /* account for the fonts extra whitespace at the bottom */
+  position: relative;
+  top: 3px;
+}
+
+.uiSignupElementsTextGrey000 {
   color: var(--grey-000);
 }
 .uiSignupElementsTextBlue200 {

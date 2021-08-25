@@ -5,7 +5,7 @@ import Input from '../../elements/input'
 import Button from '../../elements/button'
 import Link from '../../elements/link'
 import FormValidator from '../../elements/forms'
-import { isValidString, isSixDigits, isMatchingValue } from '../../elements/forms/validators'
+import { isValidString, isSixCharacters, isMatchingValue } from '../../elements/forms/validators'
 import managementPlaneIllustration from '../../management-plane.svg'
 import { IEmbarkUser, PropsWithContext, withAppContext } from '../../context'
 import { ViewPanes } from '../../constants'
@@ -20,7 +20,7 @@ const formValidator = new FormValidator<IEmbarkUser>({
     },
     {
       message: 'Verification code must be 6 digits',
-      validator: isSixDigits,
+      validator: isSixCharacters,
     },
   ],
   password: [
@@ -57,7 +57,10 @@ function ConfirmAndDeploy({
       mounted.current = false
     }
   })
-  const [error, setError] = React.useState('')
+  const [feedbackState, setFeedbackState] = React.useState({
+    error: '',
+    working: false,
+  })
   const [resendVerifyMessage, setResendVerifyMessage] = React.useState<{
     success: boolean
     message: string
@@ -67,16 +70,16 @@ function ConfirmAndDeploy({
   }
   const handleFormSubmit = async (e) => {
     e.preventDefault()
-    error && setError('')
     const { foundErrors, hasError } = formValidator.validate(embarkUser)
     setContextValue({ formErrors: foundErrors })
     if (hasError) {
       return false
     }
 
+    setFeedbackState({ error: '', working: true })
     const response = await validateEmbarkVerificationCode(user.organizationName, embarkUser)
     if (!response.success) {
-      setError(response.data?.message || response.data)
+      setFeedbackState({ error: response.data?.message || response.data, working: false })
     } else {
       const fqdn = response.data?.region_url
       window.open(`${fqdn}/ui/pmkft/login`, '_blank')
@@ -104,16 +107,21 @@ function ConfirmAndDeploy({
   }
   return (
     <Container
-      rightPanel={<img alt="management-plane" src={managementPlaneIllustration} />}
+      rightPanel={
+        <img
+          alt="management-plane"
+          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/01/graphic_platform9-managed-kubernetes_planes.svg"
+        />
+      }
       previousPane={ViewPanes.CreateUser}
     >
-      <form id="uiSignupPagesConfirmAndDeployForm" onSubmit={handleFormSubmit}>
+      <form id="uiSignupPagesConfirmAndDeployForm">
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           You're almost done!
         </Text>
-        {error && (
+        {feedbackState.error && (
           <Text variant="caption2" className="uiSignupElementsTextRed500">
-            {error}
+            {feedbackState.error}
           </Text>
         )}
         <div>
@@ -135,7 +143,9 @@ function ConfirmAndDeploy({
               {resendVerifyMessage.message}
             </Text>
           ) : (
-            <Link onClick={handleResendVerificationCode}>Resend verification code</Link>
+            <Link onClick={handleResendVerificationCode} variant="caption1">
+              Resend verification code
+            </Link>
           )}
           <div style={{ height: 18 }} />
           <Text variant="subtitle2">Create a Password</Text>
@@ -156,7 +166,9 @@ function ConfirmAndDeploy({
             error={formErrors.confirmPassword}
           />
         </div>
-        <Button type="submit">Deploy Free Trial Now</Button>
+        <Button onClick={handleFormSubmit} disabled={feedbackState.working}>
+          Deploy Free Trial Now
+        </Button>
       </form>
     </Container>
   )
