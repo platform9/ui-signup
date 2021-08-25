@@ -16,7 +16,7 @@ export default function CheckBox({ label, name, ...props }: Props) {
     <div className="uiSignupElementsCheckBox">
       <input id={id} type="checkbox" {...props} />
       <div className="uiSignupElementsCheckBoxAdornment" onClick={() => props.onChange()}>
-        {props.checked && <Icon icon="done" size={15} />}
+        {props.checked && <Icon icon="done" size={14} />}
       </div>
       <label htmlFor={id}>
         <Text>{label}</Text>

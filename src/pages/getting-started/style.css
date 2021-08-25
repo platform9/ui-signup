@@ -38,3 +38,25 @@
   align-self: center;
   justify-self: center;
 }
+
+.uiSignupPagesGettingStartedLogoStripContainer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 34px;
+  margin-bottom: 40px;
+}
+.uiSignupPagesGettingStartedLogoStrip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  max-width: 1200px;
+  gap: 80px;
+  margin: 0;
+  align-items: center;
+  justify-items: center;
+}
+
+.uiSignupPagesGettingStartedLogoStrip img {
+  width: 100%;
+}

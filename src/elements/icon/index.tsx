@@ -63,9 +63,9 @@ const icons = {
       <g
         id="Sign-Up-Flow-(Sandbox-v2)"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g
           id="07b_Sign-Up-Flow---Password-Filled"

@@ -13,7 +13,6 @@ import {
   hasUppercaseLetter,
   hasSpecialCharacter,
 } from '../../elements/forms/validators'
-import managementPlaneIllustration from '../../management-plane.svg'
 import { IEmbarkUser, PropsWithContext, withAppContext } from '../../context'
 import { ViewPanes } from '../../constants'
 import { resendEmbarkVerificationEmail, validateEmbarkVerificationCode } from '../../net/actions'
