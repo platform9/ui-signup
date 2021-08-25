@@ -10,10 +10,10 @@ interface Props
   onChange: () => void
 }
 
-export default function CheckBox({ label, name, ...props }: Props) {
+export default function CheckBox({ label, name, className, ...props }: Props) {
   const id = `uiSignupElementsCheckBox_${name}`
   return (
-    <div className="uiSignupElementsCheckBox">
+    <div className={`uiSignupElementsCheckBox ${className}`}>
       <input id={id} type="checkbox" {...props} />
       <div className="uiSignupElementsCheckBoxAdornment" onClick={() => props.onChange()}>
         {props.checked && <Icon icon="done" size={14} />}

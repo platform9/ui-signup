@@ -60,12 +60,14 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
                 checked={deployTarget === DeployTargets.Import}
                 onChange={() => handleChange(DeployTargets.Import)}
                 label="I have an existing EKS, AKs or GKE cluser to import."
+                className={error ? 'uiSignupError' : ''}
               />
               <CheckBox
                 name={DeployTargets.Create}
                 checked={deployTarget === DeployTargets.Create}
                 onChange={() => handleChange(DeployTargets.Create)}
                 label="I have VMs, servers or public cloud to deploy to."
+                className={error ? 'uiSignupError' : ''}
               />
             </div>
             <div>
