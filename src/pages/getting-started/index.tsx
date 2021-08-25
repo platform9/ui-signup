@@ -31,9 +31,11 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
       setError(true)
     }
   }
-  const handleChange = (deployTarget) => {
+  const handleChange = (newDeployTarget) => {
     if (error) setError(false)
-    setContextValue({ deployTarget })
+    setContextValue({
+      deployTarget: deployTarget === newDeployTarget ? undefined : newDeployTarget,
+    })
   }
   return (
     <Container>
