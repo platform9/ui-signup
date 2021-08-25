@@ -21,4 +21,4 @@ export const hasUppercaseLetter = (str: string = '') => str.toLowerCase() !== st
 
 export const specialChars = '-+!@#$%^&*()?'
 const specialCharRegex = new RegExp(`[${specialChars}]`)
-export const hasSpecialCharacter = (str: string = '') => specialCharRegex.test('str')
+export const hasSpecialCharacter = (str: string = '') => specialCharRegex.test(str)
