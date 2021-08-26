@@ -1,5 +1,5 @@
 // Actions
-import { makeRequest, MakeRequest } from './request'
+import { makeRequest } from './request'
 
 // App
 import { apiUrl, ViewPanes } from '../constants'

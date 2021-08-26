@@ -24,7 +24,6 @@ export enum PasswordValidatorHelpFields {
 export default function PasswordValidatorHelp({ target, formValues }: Props) {
   const foundErrors = formValidator.validateField(target, formValues, false)
   const isEmpty = !!foundErrors[PasswordValidatorHelpFields.PasswordEmpty]
-  debugger
   return (
     <div className="uiSignupPagesConfirmAndDeployPasswordValidatorHelp">
       <PasswordFieldValidator

@@ -42,9 +42,12 @@ function Input({ accessor, label, error, info, helpText, ...props }: PropsWithCo
       </label>
 
       {info && <InfoTooltip message={info} />}
-      <Text className="uiSignupElementsTextRed500" variant="caption2">
-        {error || ''}&nbsp;
-      </Text>
+      {!helpText && (
+        <Text className="uiSignupElementsTextRed500" variant="caption2">
+          {error || ''}
+          &nbsp;
+        </Text>
+      )}
       {helpText && (
         <Text className="uiSignupElementsTextGrey000" variant="caption2">
           {helpText || ''}

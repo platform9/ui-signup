@@ -8,7 +8,6 @@ import React, { useEffect } from 'react'
 import {
   resendEmbarkVerificationEmail,
   validateEmbarkVerificationCode,
-  autoLoginRedirect,
   authenticateUser,
 } from '../../net/actions'
 
@@ -84,7 +83,15 @@ function ConfirmAndDeploy({
         password: embarkUser.password,
         vcode: embarkUser.vcode,
       })
-      autoLoginRedirect(fqdn)
+      if (!authenticatedResponse.success) {
+        setFeedbackState({
+          error:
+            authenticatedResponse.error?.message ||
+            'Login failed. Please contact support@platform9.com for assistance.',
+          working: false,
+        })
+        return authenticatedResponse
+      }
     }
     return true
   }
