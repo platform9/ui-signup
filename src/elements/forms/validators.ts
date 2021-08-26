@@ -19,6 +19,6 @@ export const isMatchingValue = (key) => (value, formValues) => {
 export const hasLowercaseLetter = (str: string = '') => str.toUpperCase() !== str
 export const hasUppercaseLetter = (str: string = '') => str.toLowerCase() !== str
 
-export const specialChars = '-+!@#$%^&*()?'
+const specialChars = '-+!@#$%^&*()?'
 const specialCharRegex = new RegExp(`[${specialChars}]`)
 export const hasSpecialCharacter = (str: string = '') => specialCharRegex.test(str)

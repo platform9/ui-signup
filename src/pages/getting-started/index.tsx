@@ -1,13 +1,22 @@
+// Styles
+import './style.css'
+
+// Libs
 import React, { PropsWithChildren } from 'react'
+
+// Actions
+import { navigate } from '../../net/actions'
+
+// App
+import { PropsWithContext, withAppContext } from '../../context'
+import { ViewPanes, DeployTargets } from '../../constants'
+
+// Elements
 import Container from '../../elements/container'
 import Text from '../../elements/text'
 import CheckBox from '../../elements/check-box'
 import Button from '../../elements/button'
 import Link from '../../elements/link'
-import { PropsWithContext, withAppContext } from '../../context'
-import { ViewPanes, DeployTargets } from '../../constants'
-import './style.css'
-import { navigate } from '../../net/actions'
 import LogoStrip from './logo-strip'
 
 type Props = PropsWithChildren<{}>

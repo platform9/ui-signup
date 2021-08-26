@@ -1,7 +1,12 @@
+// Styles
+import './style.css'
+
+// Libs
 import React, { PropsWithChildren } from 'react'
+
+// Elements
 import Icon from '../icon'
 import Text from '../text'
-import './style.css'
 
 interface Props
   extends React.DetailedHTMLProps<
@@ -23,8 +28,9 @@ export default function Button({
 }: PropsWithChildren<Props>) {
   const disabledClass = disabled ? 'disabled' : ''
   const nextArrowClass = nextArrow ? 'uiSignupElementsButtonArrow' : ''
-  const classes =
-    `uiSignupElementsButton btn btn-${variant} ${disabledClass} ${nextArrowClass} ${className}`.trim()
+  const btn = 'uiSignupElementsButton btn'
+  const classes = `${btn} btn-${variant} ${disabledClass} ${nextArrowClass} ${className}`.trim()
+
   return (
     <a className={classes} {...props} onClick={!disabled ? onClick : undefined}>
       <Text variant="buttonPrimary">{children}</Text>

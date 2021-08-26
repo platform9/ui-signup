@@ -6,7 +6,10 @@ export const appendQueryString = (urlPath: string, params: { [key: string]: any 
   return `${urlPath}?${searchParams.toString()}`
 }
 
-export const makeRequest = async (url: string, options = {} as IRequestOptions) => {
+export const makeRequest = async <T>(
+  url: string,
+  options = {} as IRequestOptions,
+): Promise<MakeRequest<T>> => {
   try {
     if (!options) options = {}
     options.method = options.method || 'GET'
@@ -30,12 +33,12 @@ export const makeRequest = async (url: string, options = {} as IRequestOptions) 
     const response = await fetch(url, options as any)
     const json = await response.json()
     if (!response.ok) {
-      throw json
+      throw new Error(json)
     }
     return { success: true, data: json }
   } catch (e) {
     console.error(e)
-    return { success: false, data: e }
+    return { success: false, error: e }
   }
 }
 
@@ -43,4 +46,11 @@ export interface IRequestOptions {
   body?: any
   method?: string
   headers?: Headers | object
+  credentials?: Request['credentials']
+}
+
+export interface MakeRequest<T> {
+  success: boolean
+  error?: Error
+  data?: T
 }

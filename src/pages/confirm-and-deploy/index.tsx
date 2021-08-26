@@ -1,80 +1,34 @@
-import React, { useEffect } from 'react'
-import Container from '../../elements/container'
-import Text from '../../elements/text'
-import Input from '../../elements/input'
-import Button from '../../elements/button'
-import Link from '../../elements/link'
-import FormValidator from '../../elements/forms'
-import {
-  isValidString,
-  hasMinLength,
-  isMatchingValue,
-  hasLowercaseLetter,
-  hasUppercaseLetter,
-  hasSpecialCharacter,
-} from '../../elements/forms/validators'
-import { IEmbarkUser, PropsWithContext, withAppContext } from '../../context'
-import { ViewPanes } from '../../constants'
-import { resendEmbarkVerificationEmail, validateEmbarkVerificationCode } from '../../net/actions'
-import PasswordValidatorHelp from './password-validator-help'
-
+// Styles
 import './style.css'
 
-interface Props {}
+// Libs
+import React, { useEffect } from 'react'
 
-const formValidator = new FormValidator<IEmbarkUser>({
-  vcode: [
-    {
-      id: 'vcode-empty',
-      message: 'Please enter your verification code',
-      validator: isValidString,
-    },
-    {
-      id: 'vcode-length',
-      message: 'Verification code must be 6 digits',
-      validator: hasMinLength(6, true),
-    },
-  ],
-  password: [
-    {
-      id: 'password-empty',
-      message: 'Please enter your password',
-      validator: isValidString,
-    },
-    {
-      id: 'password-length',
-      message: 'Password must be at least 8 characters',
-      validator: hasMinLength(8),
-    },
-    {
-      id: 'password-lowercase',
-      message: '1 lowercase letter required',
-      validator: hasLowercaseLetter,
-    },
-    {
-      id: 'password-uppercase',
-      message: '1 uppercase letter required',
-      validator: hasUppercaseLetter,
-    },
-    {
-      id: 'password-special-character',
-      message: '1 special character required',
-      validator: hasSpecialCharacter,
-    },
-  ],
-  confirmPassword: [
-    {
-      id: 'confirm-password-empty',
-      message: 'Please confirm your password',
-      validator: isValidString,
-    },
-    {
-      id: 'confirm-password-match',
-      message: 'Passwords do not match',
-      validator: isMatchingValue('password'),
-    },
-  ],
-})
+// Actions
+import {
+  resendEmbarkVerificationEmail,
+  validateEmbarkVerificationCode,
+  autoLoginRedirect,
+  authenticateUser,
+} from '../../net/actions'
+
+// App
+import { ViewPanes } from '../../constants'
+import { PropsWithContext, withAppContext } from '../../context'
+import { SegmentAnalytics } from '../../analytics'
+
+// Elements
+import Button from '../../elements/button'
+import Container from '../../elements/container'
+import Input from '../../elements/input'
+import Link from '../../elements/link'
+import Text from '../../elements/text'
+import PasswordValidatorHelp from './password-validator-help'
+
+// Validator
+import { formValidator } from './validator'
+
+interface Props {}
 
 const defaultVerifyState = null as any
 
@@ -87,11 +41,15 @@ function ConfirmAndDeploy({
 }: PropsWithContext<Props>) {
   const mounted = React.useRef(false)
   useEffect(() => {
+    SegmentAnalytics.page('PMKFT Verification Code Page', {
+      section: 'Launch Service',
+      topic: 'Verification Code',
+    })
     mounted.current = true
     return () => {
       mounted.current = false
     }
-  })
+  }, [])
   const [feedbackState, setFeedbackState] = React.useState({
     error: '',
     working: false,
@@ -112,12 +70,21 @@ function ConfirmAndDeploy({
     }
 
     setFeedbackState({ error: '', working: true })
-    const response = await validateEmbarkVerificationCode(user.organizationName, embarkUser)
-    if (!response.success) {
-      setFeedbackState({ error: response.data?.message || response.data, working: false })
+    const validateResponse = await validateEmbarkVerificationCode(user.organizationName, embarkUser)
+    if (!validateResponse.success) {
+      setFeedbackState({
+        error: validateResponse.error?.message || 'Unable to verify your account',
+        working: false,
+      })
     } else {
-      const fqdn = response.data?.region_url
-      window.open(`${fqdn}/ui/pmkft/login`, '_blank')
+      const fqdn = validateResponse.data?.region_url
+      const authenticatedResponse = await authenticateUser(user.organizationName, {
+        fqdn,
+        email: user.organizationEmail,
+        password: embarkUser.password,
+        vcode: embarkUser.vcode,
+      })
+      autoLoginRedirect(fqdn)
     }
     return true
   }
@@ -126,7 +93,7 @@ function ConfirmAndDeploy({
     if (!response.success) {
       setResendVerifyMessage({
         success: false,
-        message: response.data?.message || 'Could not resend verification code',
+        message: response.error?.message || 'Could not resend verification code',
       })
     } else {
       setResendVerifyMessage({
@@ -141,15 +108,7 @@ function ConfirmAndDeploy({
     }, 5000)
   }
   return (
-    <Container
-      rightPanel={
-        <img
-          alt="management-plane"
-          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/08/management-plane.svg"
-        />
-      }
-      previousPane={ViewPanes.CreateUser}
-    >
+    <Container rightPanel previousPane={ViewPanes.CreateUser}>
       <form id="uiSignupPagesConfirmAndDeployForm">
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           You're almost done!
@@ -198,13 +157,7 @@ function ConfirmAndDeploy({
             label="Confirm Password"
             type="password"
             onChange={handleInputChange}
-            helpText={
-              <PasswordValidatorHelp
-                formValues={embarkUser}
-                validator={formValidator}
-                target="password"
-              />
-            }
+            helpText={<PasswordValidatorHelp formValues={embarkUser} target="password" />}
           />
         </div>
         <Button onClick={handleFormSubmit} disabled={feedbackState.working}>

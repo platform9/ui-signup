@@ -1,9 +1,16 @@
+// Styles
+import './style.css'
+
+// Libs
 import React from 'react'
+
+// App
 import { PropsWithContext, withAppContext } from '../../context'
 import { getElementProps } from '../../helpers'
-import Icon from '../icon'
+
+// Elements
 import Text, { typography } from '../text'
-import './style.css'
+import InfoTooltip from './info-tooltip'
 
 interface Props
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
@@ -43,19 +50,6 @@ function Input({ accessor, label, error, info, helpText, ...props }: PropsWithCo
           {helpText || ''}
         </Text>
       )}
-    </div>
-  )
-}
-
-const InfoTooltip = ({ message }) => {
-  return (
-    <div className="uiSignupElementsInputInfoIconContainer">
-      <Icon icon="info" size={18} className="uiSignupElementsInputInfoIcon" />
-      <div className="uiSignupElementsInputInfoTooltip">
-        <Text variant="caption2" fixWhitespace={false}>
-          {message}
-        </Text>
-      </div>
     </div>
   )
 }

@@ -1,7 +1,12 @@
+// Styles
+import './style.css'
+
+// Libs
 import React from 'react'
+
+// Elements
 import Icon from '../icon'
 import Text from '../text'
-import './style.css'
 
 interface Props
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {

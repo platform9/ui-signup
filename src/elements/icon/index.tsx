@@ -1,5 +1,8 @@
-import React from 'react'
+// Styles
 import './style.css'
+
+// Libs
+import React from 'react'
 
 interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   icon: keyof typeof icons
