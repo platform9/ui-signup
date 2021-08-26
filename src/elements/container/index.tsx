@@ -27,7 +27,7 @@ function Container({
       {previousPane && (
         <Icon
           icon="left-arrow"
-          size={32}
+          size={24}
           className="uiSignupElementsContainerBackArrow"
           onClick={() => navigate(previousPane)}
         />

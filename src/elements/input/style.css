@@ -14,6 +14,7 @@
   grid-auto-flow: row;
   padding-top: 6px;
   margin-bottom: 0 !important;
+  position: relative;
 }
 
 /* override */
@@ -29,4 +30,39 @@
   color: var(--grey-300) !important;
   transform: translate(0, -20px) scale(0.9) !important;
   padding: 0 6px !important;
+}
+
+/* tooltip */
+.uiSignupElementsInputInfoIconContainer {
+  position: absolute;
+  top: 24px;
+  right: -32px;
+}
+.uiSignupElementsInputInfoIcon {
+  position: relative;
+  color: #00abe8;
+}
+.uiSignupElementsInputInfoIcon:hover + .uiSignupElementsInputInfoTooltip {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.uiSignupElementsInputInfoTooltip {
+  display: grid;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 9999;
+
+  min-width: 150px;
+  padding: 14px;
+
+  background-color: var(--grey-800);
+  border: 1px solid var(--grey-500);
+  border-radius: 4px;
+
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  transform: scale(0);
+  transform-origin: top right;
 }

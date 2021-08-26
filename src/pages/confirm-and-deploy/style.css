@@ -1,0 +1,18 @@
+.uiSignupPagesConfirmAndDeployPasswordValidatorHelp {
+  display: grid;
+  align-items: center;
+  justify-items: start;
+  margin-left: 16px;
+}
+.uiSignupPagesConfirmAndDeployPasswordValidatorCheckContainer {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-items: start;
+  gap: 8px;
+}
+.uiSignupPagesConfirmAndDeployPasswordValidatorCheck {
+  width: 12px;
+  height: 16px;
+  display: inline-block;
+}

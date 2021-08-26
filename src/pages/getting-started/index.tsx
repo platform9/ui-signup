@@ -8,6 +8,7 @@ import { PropsWithContext, withAppContext } from '../../context'
 import { ViewPanes, DeployTargets } from '../../constants'
 import './style.css'
 import { navigate } from '../../net/actions'
+import LogoStrip from './logo-strip'
 
 type Props = PropsWithChildren<{}>
 
@@ -38,64 +39,69 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
     })
   }
   return (
-    <Container>
-      <Text variant="h2">
-        Instantly Deploy Open-Source Kubernetes
-        <br />
-        On Premises, AWS, or Azure
-      </Text>
-      <footer
-        id="uiSignupPagesGettingStartedFooter"
-        className={error ? 'uiSignupPagesGettingStartedFooterError' : ''}
-      >
-        <Text variant="subtitle1" className="uiSignupElementsTextBlue200">
-          Are you ready to experience Managed Kubernetes?
+    <>
+      <Container>
+        <Text variant="h2">
+          Instantly Deploy Open-Source Kubernetes
+          <br />
+          On Premises, AWS, or Azure
         </Text>
-        <div id="uiSignupPagesGettingStartedForm">
-          <div>
-            <CheckBox
-              name={DeployTargets.Import}
-              checked={deployTarget === DeployTargets.Import}
-              onChange={() => handleChange(DeployTargets.Import)}
-              label="I have an existing EKS, AKs or GKE cluser to import."
-            />
-            <CheckBox
-              name={DeployTargets.Create}
-              checked={deployTarget === DeployTargets.Create}
-              onChange={() => handleChange(DeployTargets.Create)}
-              label="I have VMs, servers or public cloud to deploy to."
-            />
+        <footer
+          id="uiSignupPagesGettingStartedFooter"
+          className={error ? 'uiSignupPagesGettingStartedFooterError' : ''}
+        >
+          <Text variant="subtitle1" className="uiSignupElementsTextBlue200">
+            Are you ready to experience Managed Kubernetes?
+          </Text>
+          <div id="uiSignupPagesGettingStartedForm">
+            <div>
+              <CheckBox
+                name={DeployTargets.Import}
+                checked={deployTarget === DeployTargets.Import}
+                onChange={() => handleChange(DeployTargets.Import)}
+                label="I have an existing EKS, AKs or GKE cluser to import."
+                className={error ? 'uiSignupError' : ''}
+              />
+              <CheckBox
+                name={DeployTargets.Create}
+                checked={deployTarget === DeployTargets.Create}
+                onChange={() => handleChange(DeployTargets.Create)}
+                label="I have VMs, servers or public cloud to deploy to."
+                className={error ? 'uiSignupError' : ''}
+              />
+            </div>
+            <div>
+              <Button
+                className="uiSignupPagesGettingStartedFooterErrorMessage"
+                onClick={handleClick}
+                nextArrow
+              >
+                Continue
+              </Button>
+              <Text
+                variant="caption2"
+                className="uiSignupPagesGettingStartedFooterErrorMessage uiSignupElementsTextRed500"
+              >
+                {error ? 'Please choose an option' : ''}
+                &nbsp;
+              </Text>
+            </div>
           </div>
-          <div>
-            <Button
-              className="uiSignupPagesGettingStartedFooterErrorMessage"
-              onClick={handleClick}
-              nextArrow
-            >
-              Continue
-            </Button>
-            <Text
-              variant="caption2"
-              className="uiSignupPagesGettingStartedFooterErrorMessage uiSignupElementsTextRed500"
-            >
-              {error ? 'Please choose an option' : ''}
-              &nbsp;
-            </Text>
-          </div>
-        </div>
-        <Link onClick={() => setContextValue({ showUnsureModal: true })}>
-          Not ready to deploy yet?
-        </Link>
-      </footer>
-      <ul id="uiSignupPagesGettingStartedCallouts">
-        {calloutItems.map((item, index) => (
-          <li key={index} id="uiSignupPagesGettingStartedCalloutItem">
-            <Text variant="subtitle1">{item}</Text>
-          </li>
-        ))}
-      </ul>
-      {children}
-    </Container>
+          <Link onClick={() => setContextValue({ showUnsureModal: true })}>
+            Not ready to deploy yet?
+          </Link>
+        </footer>
+        <ul id="uiSignupPagesGettingStartedCallouts">
+          {calloutItems.map((item, index) => (
+            <li key={index} id="uiSignupPagesGettingStartedCalloutItem">
+              <Text variant="subtitle1">{item}</Text>
+            </li>
+          ))}
+        </ul>
+        {children}
+      </Container>
+      <LogoStrip />
+    </>
   )
 }
 

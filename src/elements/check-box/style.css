@@ -4,8 +4,26 @@
   align-items: center;
   gap: 8px;
 }
-.uiSignupElementsCheckBox.uiSignupError input::after {
-  content: '';
-  display: block;
-  background-color: var(--red-500);
+.uiSignupElementsCheckBox input {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+.uiSignupElementsCheckBox label {
+  cursor: pointer;
+}
+.uiSignupElementsCheckBox.uiSignupError .uiSignupElementsCheckBoxAdornment {
+  border-color: var(--red-500);
+}
+
+.uiSignupElementsCheckBoxAdornment {
+  background-color: transparent;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--grey-500);
+  border-radius: 2px;
+}
+.uiSignupElementsCheckBoxAdornment:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }

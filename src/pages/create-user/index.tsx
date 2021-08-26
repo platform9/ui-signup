@@ -3,10 +3,8 @@ import { IUser, PropsWithContext, withAppContext } from '../../context'
 import Container from '../../elements/container'
 import Text from '../../elements/text'
 import Link from '../../elements/link'
-import managementPlaneIllustration from '../../management-plane.svg'
 import Input from '../../elements/input'
 import Button from '../../elements/button'
-import Icon from '../../elements/icon'
 import { ViewPanes } from '../../constants'
 import { isValidString, isLowerCase, isValidEmail } from '../../elements/forms/validators'
 import FormValidator from '../../elements/forms'
@@ -18,32 +16,38 @@ interface Props {}
 const formValidator = new FormValidator<IUser>({
   firstName: [
     {
+      id: 'first-name-empty',
       message: 'Please enter your first name',
       validator: isValidString,
     },
   ],
   lastName: [
     {
+      id: 'last-name-empty',
       message: 'Please enter your last name',
       validator: isValidString,
     },
   ],
   organizationName: [
     {
+      id: 'organization-name-empty',
       message: 'Please enter your organization name',
       validator: isValidString,
     },
     {
+      id: 'organization-name-lowercase',
       message: 'Organization name must be lowercase only',
       validator: isLowerCase,
     },
   ],
   organizationEmail: [
     {
+      id: 'organization-email-empty',
       message: 'Please enter your email address',
       validator: isValidString,
     },
     {
+      id: 'organization-email-valid',
       message: 'Please enter a valid email address',
       validator: isValidEmail,
     },
@@ -116,6 +120,7 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
             label="Organization Name"
             onChange={handleInputChange}
             error={formErrors.organizationName}
+            info="The unique name used to identify your Platform9 Instance. Must be lowercase only."
           />
           <Input
             accessor={user}
@@ -123,6 +128,7 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
             label="Organization Email"
             onChange={handleInputChange}
             error={formErrors.organizationEmail}
+            info="Your work email to use as your account login."
           />
         </div>
         <Button onClick={handleFormSubmit} nextArrow disabled={feedbackState.working}>
