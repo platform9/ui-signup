@@ -14,5 +14,6 @@
 .uiSignupPagesConfirmAndDeployPasswordValidatorCheck {
   width: 12px;
   height: 16px;
-  display: inline-block;
+  display: grid;
+  align-items: center;
 }

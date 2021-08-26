@@ -52,7 +52,7 @@ const InfoTooltip = ({ message }) => {
     <div className="uiSignupElementsInputInfoIconContainer">
       <Icon icon="info" size={18} className="uiSignupElementsInputInfoIcon" />
       <div className="uiSignupElementsInputInfoTooltip">
-        <Text variant="caption3" fixWhitespace={false}>
+        <Text variant="caption2" fixWhitespace={false}>
           {message}
         </Text>
       </div>
