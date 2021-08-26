@@ -1,5 +1,8 @@
-import React from 'react'
+// Styles
 import './style.css'
+
+// Libs
+import React from 'react'
 
 interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   icon: keyof typeof icons
@@ -29,7 +32,7 @@ const icons = {
       <path
         d="M15.333 7.969c0 .133-.054.26-.15.353l-6.8 6.8a.5.5 0 0 1-.706 0l-.23-.228a.5.5 0 0 1 0-.707l5.562-5.561H1.166a.5.5 0 0 1-.5-.5v-.321a.5.5 0 0 1 .5-.5h11.843L7.448 1.748a.5.5 0 0 1 0-.706l.229-.226a.495.495 0 0 1 .706 0l6.8 6.8c.096.094.15.22.15.354z"
         fill="#fff"
-        fill-rule="nonzero"
+        fillRule="nonzero"
       />
     </svg>
   ),
@@ -39,7 +42,7 @@ const icons = {
         transform="rotate(180 8 8)"
         d="M15.333 7.969c0 .133-.054.26-.15.353l-6.8 6.8a.5.5 0 0 1-.706 0l-.23-.228a.5.5 0 0 1 0-.707l5.562-5.561H1.166a.5.5 0 0 1-.5-.5v-.321a.5.5 0 0 1 .5-.5h11.843L7.448 1.748a.5.5 0 0 1 0-.706l.229-.226a.495.495 0 0 1 .706 0l6.8 6.8c.096.094.15.22.15.354z"
         fill="#fff"
-        fill-rule="nonzero"
+        fillRule="nonzero"
       />
     </svg>
   ),

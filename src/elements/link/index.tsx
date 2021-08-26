@@ -1,6 +1,11 @@
-import React, { PropsWithChildren } from 'react'
-import Text, { TextProps } from '../text'
+// Styles
 import './style.css'
+
+// Libs
+import React, { PropsWithChildren } from 'react'
+
+// Elements
+import Text, { TextProps } from '../text'
 
 interface Props
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {

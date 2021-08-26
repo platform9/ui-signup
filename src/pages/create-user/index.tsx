@@ -1,61 +1,37 @@
-import React from 'react'
-import { IUser, PropsWithContext, withAppContext } from '../../context'
+// Styles
+import './style.css'
+
+// Libs
+import React, { useEffect } from 'react'
+
+// Actions
+import { createEmbarkUser, navigate } from '../../net/actions'
+
+// App
+import { PropsWithContext, withAppContext } from '../../context'
+import { ViewPanes } from '../../constants'
+import { SegmentAnalytics } from '../../analytics'
+
+// Elements
 import Container from '../../elements/container'
 import Text from '../../elements/text'
 import Link from '../../elements/link'
 import Input from '../../elements/input'
 import Button from '../../elements/button'
-import { ViewPanes } from '../../constants'
-import { isValidString, isLowerCase, isValidEmail } from '../../elements/forms/validators'
-import FormValidator from '../../elements/forms'
-import { createEmbarkUser, navigate } from '../../net/actions'
-import './style.css'
+
+// Validator
+import { formValidator } from './validator'
 
 interface Props {}
 
-const formValidator = new FormValidator<IUser>({
-  firstName: [
-    {
-      id: 'first-name-empty',
-      message: 'Please enter your first name',
-      validator: isValidString,
-    },
-  ],
-  lastName: [
-    {
-      id: 'last-name-empty',
-      message: 'Please enter your last name',
-      validator: isValidString,
-    },
-  ],
-  organizationName: [
-    {
-      id: 'organization-name-empty',
-      message: 'Please enter your organization name',
-      validator: isValidString,
-    },
-    {
-      id: 'organization-name-lowercase',
-      message: 'Organization name must be lowercase only',
-      validator: isLowerCase,
-    },
-  ],
-  organizationEmail: [
-    {
-      id: 'organization-email-empty',
-      message: 'Please enter your email address',
-      validator: isValidString,
-    },
-    {
-      id: 'organization-email-valid',
-      message: 'Please enter a valid email address',
-      validator: isValidEmail,
-    },
-  ],
-})
-
 const nextView = ViewPanes.ConfirmAndDeploy
 function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithContext<Props>) {
+  useEffect(() => {
+    SegmentAnalytics.page('PMKFT Sign Up Page', {
+      section: 'Launch Service',
+      topic: 'Create Account',
+    })
+  }, [])
   const [feedbackState, setFeedbackState] = React.useState({
     error: '',
     working: false,
@@ -76,20 +52,15 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
     if (response.success) {
       navigate(nextView)
     } else {
-      setFeedbackState({ error: response.data?.message || response.data, working: false })
+      setFeedbackState({
+        error: response.error?.message || 'Sorry, your signup failed. Contact signup@platform9.com',
+        working: false,
+      })
     }
     return true
   }
   return (
-    <Container
-      rightPanel={
-        <img
-          alt="management-plane"
-          src="https://platformninesg.wpengine.com/wp-content/uploads/2021/08/management-plane.svg"
-        />
-      }
-      previousPane={ViewPanes.GettingStarted}
-    >
+    <Container rightPanel previousPane={ViewPanes.GettingStarted}>
       <form id="uiSignupPagesCreateUserForm">
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           Tell us more about yourself

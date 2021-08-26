@@ -1,11 +1,15 @@
+// Libs
 import React from 'react'
-import FormValidator from '../../elements/forms'
+
+// Elements
 import Icon from '../../elements/icon'
 import Text from '../../elements/text'
 
-interface Props<T> {
+// Validator
+import { formValidator } from './validator'
+
+interface Props {
   target: string
-  validator: FormValidator<T>
   formValues: { [key: string]: any }
 }
 
@@ -17,26 +21,24 @@ export enum PasswordValidatorHelpFields {
   PasswordSpecialCharacter = 'password-special-character',
 }
 
-// \f00c
-export default function PasswordValidatorHelp<T>({ target, validator, formValues }: Props<T>) {
-  const foundErrors = validator.validateField(target, formValues, false)
+export default function PasswordValidatorHelp({ target, formValues }: Props) {
+  const foundErrors = formValidator.validateField(target, formValues, false)
   const isEmpty = !!foundErrors[PasswordValidatorHelpFields.PasswordEmpty]
-  debugger
   return (
     <div className="uiSignupPagesConfirmAndDeployPasswordValidatorHelp">
-      <PasswordCheck
+      <PasswordFieldValidator
         isValid={!isEmpty && !foundErrors[PasswordValidatorHelpFields.PasswordLength]}
         value="At least 8 characters"
       />
-      <PasswordCheck
+      <PasswordFieldValidator
         isValid={!isEmpty && !foundErrors[PasswordValidatorHelpFields.PasswordLowercase]}
         value="1 lowercase letter"
       />
-      <PasswordCheck
+      <PasswordFieldValidator
         isValid={!isEmpty && !foundErrors[PasswordValidatorHelpFields.PasswordUppercase]}
         value="1 uppercase letter"
       />
-      <PasswordCheck
+      <PasswordFieldValidator
         isValid={!isEmpty && !foundErrors[PasswordValidatorHelpFields.PasswordSpecialCharacter]}
         value="1 special character"
       />
@@ -44,7 +46,7 @@ export default function PasswordValidatorHelp<T>({ target, validator, formValues
   )
 }
 
-const PasswordCheck = ({ isValid, value }) => {
+const PasswordFieldValidator = ({ isValid, value }) => {
   return (
     <Text
       variant="caption3"
