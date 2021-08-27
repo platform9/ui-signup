@@ -33,7 +33,7 @@ export const makeRequest = async <T>(
     const response = await fetch(url, options as any)
     const json = await response.json()
     if (!response.ok) {
-      throw new Error(json)
+      throw new Error(json?.message || json)
     }
     return { success: true, data: json }
   } catch (e) {

@@ -21,11 +21,18 @@ import Button from '../../elements/button'
 
 // Validator
 import { formValidator } from './validator'
+import CheckBox from '../../elements/check-box'
 
 interface Props {}
 
 const nextView = ViewPanes.ConfirmAndDeploy
-function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithContext<Props>) {
+function CreateUser({
+  setContextValue,
+  user,
+  formErrors,
+  termsAccepted,
+  ...props
+}: PropsWithContext<Props>) {
   useEffect(() => {
     SegmentAnalytics.page('PMKFT Sign Up Page', {
       section: 'Launch Service',
@@ -36,14 +43,31 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
     error: '',
     working: false,
   })
+  const handleTermsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setContextValue({ termsAccepted: e.target.checked })
+  }
   const handleInputChange = (e) => {
     setContextValue({ user: { ...user, [e.target.name]: e.target.value } })
   }
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     const { foundErrors, hasError } = formValidator.validate(user)
+    if (!termsAccepted) {
+      foundErrors.privacyTerms = 'You must accept our Terms and Privacy Policy.'
+      SegmentAnalytics.track('WZ Sign-Up TOS Not Checked Error - 1', {
+        email: user.organizationEmail,
+        firstname: user.firstName,
+        lastname: user.lastName,
+        account_name: user.organizationName,
+        wizard_step: 'Web Sign Up Free Tier Create Account Submission Error',
+        wizard_state: 'Error',
+        wizard_progress: '1 of 2',
+        wizard_name: 'Web Sign Up Free Tier',
+      })
+    }
     setContextValue({ formErrors: foundErrors })
-    if (hasError) {
+    if (hasError || !termsAccepted) {
+      setFeedbackState({ error: '', working: false })
       return false
     }
 
@@ -60,16 +84,22 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
     return true
   }
   return (
-    <Container rightPanel previousPane={ViewPanes.GettingStarted}>
+    <Container
+      rightPanel
+      previousPane={ViewPanes.GettingStarted}
+      className="uiSignupPagesCreateUserContainer"
+    >
       <form id="uiSignupPagesCreateUserForm">
-        <Text variant="h3" className="uiSignupElementsTextBlue200">
-          Tell us more about yourself
-        </Text>
-        {feedbackState.error && (
-          <Text variant="caption2" className="uiSignupElementsTextRed500">
-            {feedbackState.error}
+        <div className="uiSignupPagesCreateUserFormTitleContainer">
+          <Text variant="h3" className="uiSignupElementsTextBlue200">
+            Tell us more about yourself
           </Text>
-        )}
+          {feedbackState.error && (
+            <Text variant="caption2" className="uiSignupElementsTextRed500">
+              {feedbackState.error}
+            </Text>
+          )}
+        </div>
         <div>
           <Input
             accessor={user}
@@ -100,6 +130,28 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
             onChange={handleInputChange}
             error={formErrors.organizationEmail}
             info="Your work email to use as your account login."
+          />
+          <CheckBox
+            name="terms-privacy"
+            checked={!!termsAccepted}
+            error={formErrors.privacyTerms}
+            onChange={handleTermsChange}
+            variant="body2"
+            label={[
+              'By signing up, I agree to the ',
+              <Link href="/terms-conditions/" target="_blank" fixWhitespace={false}>
+                Terms of Service
+              </Link>,
+              ' and ',
+              <Link href="/terms-conditions/privacy/" target="_blank" fixWhitespace={false}>
+                Privacy Policy
+              </Link>,
+            ]}
+            className={
+              formErrors.privacyTerms
+                ? 'uiSignupError uiSignupPagesCreateUserFormTOS'
+                : 'uiSignupPagesCreateUserFormTOS'
+            }
           />
         </div>
         <Button onClick={handleFormSubmit} nextArrow disabled={feedbackState.working}>

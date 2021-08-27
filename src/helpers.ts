@@ -1,5 +1,5 @@
-import { ViewPanes } from "./constants"
-import { IAppContext, IAppState } from "./context"
+import { ViewPanes } from './constants'
+import { IAppContext, IAppState } from './context'
 
 export const getElementProps = (props: any = {}): any => {
   const {
@@ -7,6 +7,7 @@ export const getElementProps = (props: any = {}): any => {
     activePane,
     deployTarget,
     showUnsureModal,
+    termsAccepted,
     user,
     embarkUser,
     formErrors,
@@ -14,7 +15,6 @@ export const getElementProps = (props: any = {}): any => {
   } = props
   return rest
 }
-
 
 export const syncState = (state: IAppState) => {
   localStorage.setItem('uiSignupAppState', JSON.stringify(state))

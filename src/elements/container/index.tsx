@@ -16,11 +16,13 @@ import Icon from '../icon'
 import UnsureModal from './unsure-modal'
 
 type Props = PropsWithChildren<{
+  className?: string
   rightPanel?: boolean
   previousPane?: ViewPanes
 }>
 
 function Container({
+  className = '',
   children,
   rightPanel,
   showUnsureModal,
@@ -30,7 +32,7 @@ function Container({
   return (
     <article
       id="uiSignupElementsContainer"
-      className={!!rightPanel ? 'uiSignupElementsContainer-full-width' : undefined}
+      className={!!rightPanel ? `uiSignupElementsContainer-full-width ${className}` : className}
     >
       {previousPane && (
         <Icon

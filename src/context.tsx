@@ -17,7 +17,7 @@ export interface IAppState {
   showUnsureModal?: boolean
   activePane: ViewPanes
   deployTarget?: DeployTargets
-
+  termsAccepted: boolean
   user: IUser
   embarkUser: IEmbarkUser
   formErrors: { [key: string]: string }
@@ -29,6 +29,7 @@ export const appDefaultState: IAppContext = {
   },
   activePane: ViewPanes.GettingStarted,
   deployTarget: undefined,
+  termsAccepted: false,
   showUnsureModal: false,
   user: {} as any,
   embarkUser: {},

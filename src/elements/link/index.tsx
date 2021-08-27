@@ -8,14 +8,20 @@ import React, { PropsWithChildren } from 'react'
 import Text, { TextProps } from '../text'
 
 interface Props
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+  extends React.DetailedHTMLProps<React.AllHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   variant?: TextProps['variant']
+  fixWhitespace?: boolean
 }
 
-export default function Link({ children, variant = 'body2', ...props }: PropsWithChildren<Props>) {
+export default function Link({
+  children,
+  variant = 'body2',
+  fixWhitespace,
+  ...props
+}: PropsWithChildren<Props>) {
   return (
     <a className="uiSignupElementsLink" {...props}>
-      <Text className="uiSignupElementsTextBlue500" variant={variant}>
+      <Text className="uiSignupElementsTextBlue500" variant={variant} fixWhitespace={fixWhitespace}>
         {children}
       </Text>
     </a>
