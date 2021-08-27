@@ -11,7 +11,7 @@ export default class FormValidator<T> {
   constructor(private fieldValidators: FieldValidators<T>) {}
 
   validateField(field, form, stopAtFirstError = true) {
-    const foundErrors = {}
+    const foundErrors: { [key: string]: any } = {}
     const validators: FormValidators<T> = this.fieldValidators[field]
     const value = form[field]
     validators.every(({ validator, message, id }) => {
@@ -28,7 +28,7 @@ export default class FormValidator<T> {
     return foundErrors
   }
   validate(form: FormValues<T>) {
-    let foundErrors = {}
+    let foundErrors: { [key: string]: any } = {}
     for (const field of Object.keys(this.fieldValidators)) {
       foundErrors = { ...foundErrors, ...this.validateField(field, form) }
     }

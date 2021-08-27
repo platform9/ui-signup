@@ -9,10 +9,7 @@ import Icon from '../icon'
 import Text from '../text'
 
 interface Props
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  > {
+  extends React.DetailedHTMLProps<React.AllHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   variant?: 'primary' | 'secondary'
   nextArrow?: boolean
 }

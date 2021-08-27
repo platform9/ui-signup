@@ -5,7 +5,7 @@ import React from 'react'
 import { autoLoginRedirect } from '../../net/actions'
 
 // App
-import { sandboxFqdn } from '../../constants'
+import { SegmentAnalytics } from '../../analytics'
 
 // Elements
 import Button from '../button'
@@ -13,7 +13,7 @@ import Text from '../text'
 
 export default function UnsureModal({ onClose }) {
   const handleViewLiveDemo = () => {
-    autoLoginRedirect(sandboxFqdn, '_blank')
+    SegmentAnalytics.track('WZ Sign-up Launched Live Demo', {})
   }
   return (
     <div id="uiSignupElementsContainerUnsureModal">
@@ -28,7 +28,9 @@ export default function UnsureModal({ onClose }) {
           <Button onClick={onClose} variant="secondary">
             Explore Later
           </Button>
-          <Button onClick={handleViewLiveDemo}>Go To Live Demo</Button>
+          <Button onClick={handleViewLiveDemo} href="https://youtu.be/kC_Jfd-Nucg" target="_blank">
+            View Platform9 Demo
+          </Button>
         </footer>
       </div>
     </div>

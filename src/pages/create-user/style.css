@@ -6,3 +6,10 @@
   gap: 18px;
   text-align: center;
 }
+.uiSignupPagesCreateUserFormTitleContainer {
+  display: grid;
+  align-items: center;
+}
+#uiSignupElementsContainer.uiSignupPagesCreateUserContainer > section {
+  padding-bottom: 32px;
+}

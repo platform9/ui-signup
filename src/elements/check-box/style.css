@@ -4,6 +4,21 @@
   align-items: center;
   gap: 8px;
 }
+.uiSignupPagesCreateUserFormTOS {
+  grid-template-columns: max-content minmax(150px, 300px);
+}
+.uiSignupPagesCreateUserFormTOS .uiSignupElementsCheckBoxLabelMessage {
+  display: flex;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.uiSignupPagesCreateUserFormTOS .uiSignupElementsCheckBoxAdornment {
+  align-self: start;
+  margin-top: 3px;
+}
 .uiSignupElementsCheckBox input {
   position: absolute;
   visibility: hidden;
@@ -12,6 +27,7 @@
 .uiSignupElementsCheckBox label {
   cursor: pointer;
 }
+
 .uiSignupElementsCheckBox.uiSignupError .uiSignupElementsCheckBoxAdornment {
   border-color: var(--red-500);
 }
@@ -26,4 +42,8 @@
 }
 .uiSignupElementsCheckBoxAdornment:hover {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.uiSignupElementsCheckBoxError {
+  grid-column: 2;
 }

@@ -10,6 +10,7 @@ import { navigate } from '../../net/actions'
 // App
 import { PropsWithContext, withAppContext } from '../../context'
 import { ViewPanes, DeployTargets } from '../../constants'
+import { SegmentAnalytics } from '../../analytics'
 
 // Elements
 import Container from '../../elements/container'
@@ -36,6 +37,10 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
   const [error, setError] = React.useState(false)
   const handleClick = () => {
     if (deployTarget) {
+      SegmentAnalytics.track('WZ Sign-up Qualification - 0', {
+        import_cluster: deployTarget === DeployTargets.Import,
+        build_cluster: deployTarget === DeployTargets.Create,
+      })
       navigate(nextView)
     } else {
       setError(true)
