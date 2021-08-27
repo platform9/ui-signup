@@ -14,7 +14,7 @@ interface Props
   label: string | Array<string | JSX.Element>
   error?: string
   variant?: TextProps['variant']
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: () => void
 }
 
 export default function CheckBox({
@@ -29,7 +29,7 @@ export default function CheckBox({
   return (
     <div className={`uiSignupElementsCheckBox ${className}`}>
       <input id={id} type="checkbox" {...props} />
-      <div className="uiSignupElementsCheckBoxAdornment" onClick={(e: any) => props.onChange(e)}>
+      <div className="uiSignupElementsCheckBoxAdornment" onClick={() => props.onChange()}>
         {props.checked && <Icon icon="done" size={14} />}
       </div>
       <label htmlFor={id}>

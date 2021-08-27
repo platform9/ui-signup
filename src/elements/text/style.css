@@ -3,7 +3,7 @@
 }
 .uiSignupElementsTextWhitespaceFix {
   /* account for the fonts extra whitespace at the bottom */
-  top: 3px;
+  top: 2px;
 }
 
 .uiSignupElementsTextGrey000 {

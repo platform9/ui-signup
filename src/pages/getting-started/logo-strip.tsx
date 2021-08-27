@@ -9,7 +9,7 @@ export default function LogoStrip() {
   return (
     <div className="uiSignupPagesGettingStartedLogoStripContainer">
       <Text variant="subtitle2" className="uiSignupElementsTextBlue200">
-        Join the Ranks of Modern Platform Teams
+        Join the Ranks of Modern Cloud Platform Teams
       </Text>
       <div className="uiSignupPagesGettingStartedLogoStrip">
         <img src={partnerLogoURLs[PartnerLogos.Juniper]} alt={PartnerLogos.Juniper} />

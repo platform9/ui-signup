@@ -12,10 +12,12 @@ interface Props
   extends React.DetailedHTMLProps<React.AllHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   variant?: 'primary' | 'secondary'
   nextArrow?: boolean
+  container?: 'lg' | 'sm'
 }
 
 export default function Button({
   children,
+  container = 'sm',
   className = '',
   variant = 'primary',
   disabled = false,
@@ -25,7 +27,7 @@ export default function Button({
 }: PropsWithChildren<Props>) {
   const disabledClass = disabled ? 'disabled' : ''
   const nextArrowClass = nextArrow ? 'uiSignupElementsButtonArrow' : ''
-  const btn = 'uiSignupElementsButton btn'
+  const btn = `uiSignupElementsButton btn ${container === 'lg' ? 'uiSignupElementsButtonLg' : ''}`
   const classes = `${btn} btn-${variant} ${disabledClass} ${nextArrowClass} ${className}`.trim()
 
   return (

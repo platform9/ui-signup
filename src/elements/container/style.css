@@ -88,5 +88,5 @@
   padding-top: 16px;
   display: grid;
   grid-auto-flow: column;
-  gap: 16px;
+  gap: 8px;
 }

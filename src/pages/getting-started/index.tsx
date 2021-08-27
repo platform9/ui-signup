@@ -56,19 +56,19 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
     <>
       <Container>
         <Text variant="h2">
-          Instantly Deploy Open-Source Kubernetes
+          Kubernetes as a Service on Any Cloud;
           <br />
-          On Premises, AWS, or Azure
+          Public, Private & Edge
         </Text>
         <footer
           id="uiSignupPagesGettingStartedFooter"
           className={error ? 'uiSignupPagesGettingStartedFooterError' : ''}
         >
           <Text variant="subtitle1" className="uiSignupElementsTextBlue200">
-            Are you ready to experience Managed Kubernetes?
+            Are you ready to use Platform9 Managed Kubernetes?
           </Text>
           <div id="uiSignupPagesGettingStartedForm">
-            <div>
+            <div className="uiSignupPagesGettingStartedFormSelection">
               <CheckBox
                 name={DeployTargets.Import}
                 checked={deployTarget === DeployTargets.Import}
@@ -86,8 +86,9 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
             </div>
             <div>
               <Button
-                className="uiSignupPagesGettingStartedFooterErrorMessage"
+                className="uiSignupPagesGettingStartedFooterContinue uiSignupPagesGettingStartedFooterErrorMessage"
                 onClick={handleClick}
+                container="lg"
                 nextArrow
               >
                 Continue
