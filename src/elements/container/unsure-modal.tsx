@@ -1,9 +1,6 @@
 // Libs
 import React from 'react'
 
-// Actions
-import { autoLoginRedirect } from '../../net/actions'
-
 // App
 import { SegmentAnalytics } from '../../analytics'
 

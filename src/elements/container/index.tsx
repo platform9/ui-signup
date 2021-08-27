@@ -10,6 +10,7 @@ import { navigate } from '../../net/actions'
 // App
 import { managementPlaneURL, ViewPanes } from '../../constants'
 import { PropsWithContext, withAppContext } from '../../context'
+import { SegmentAnalytics } from '../../analytics'
 
 // Elements
 import Icon from '../icon'
@@ -29,6 +30,10 @@ function Container({
   previousPane,
   setContextValue,
 }: PropsWithContext<Props>) {
+  const handleBack = () => {
+    SegmentAnalytics.track('WZ Sign-up Back', {})
+    navigate(previousPane!)
+  }
   return (
     <article
       id="uiSignupElementsContainer"
@@ -39,7 +44,7 @@ function Container({
           icon="left-arrow"
           size={24}
           className="uiSignupElementsContainerBackArrow"
-          onClick={() => navigate(previousPane)}
+          onClick={handleBack}
         />
       )}
       {showUnsureModal && (

@@ -12,7 +12,6 @@ import {
 } from '../../net/actions'
 
 // App
-import { ViewPanes } from '../../constants'
 import { PropsWithContext, withAppContext } from '../../context'
 import { SegmentAnalytics } from '../../analytics'
 
@@ -115,7 +114,7 @@ function ConfirmAndDeploy({
     }, 5000)
   }
   return (
-    <Container rightPanel previousPane={ViewPanes.CreateUser}>
+    <Container rightPanel>
       <form id="uiSignupPagesConfirmAndDeployForm">
         <Text variant="h3" className="uiSignupElementsTextBlue200">
           You're almost done!

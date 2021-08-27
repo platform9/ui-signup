@@ -43,8 +43,8 @@ function CreateUser({
     error: '',
     working: false,
   })
-  const handleTermsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setContextValue({ termsAccepted: e.target.checked })
+  const handleTermsChange = () => {
+    setContextValue({ termsAccepted: !termsAccepted })
   }
   const handleInputChange = (e) => {
     setContextValue({ user: { ...user, [e.target.name]: e.target.value } })
