@@ -80,9 +80,6 @@ class App extends React.Component<any, IAppContext> {
     return (
       <AppContext.Provider value={this.state}>
         <main id="uiSignupAppMainEntry">
-          <Text variant="h3" className="uiSignupAppMainTitle">
-            Get started with Platform9.
-          </Text>
           <ActiveView />
         </main>
       </AppContext.Provider>

@@ -1,7 +1,8 @@
 #uiSignupElementsContainer {
+  margin-top: 1.5rem;
   position: relative;
   width: 1120px;
-  height: 600px;
+  min-height: 600px;
   display: grid;
   justify-items: stretch;
   align-items: stretch;

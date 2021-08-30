@@ -14,6 +14,7 @@ import {
 // App
 import { PropsWithContext, withAppContext } from '../../context'
 import { SegmentAnalytics } from '../../analytics'
+import { clearState } from '../../helpers'
 
 // Elements
 import Button from '../../elements/button'
@@ -89,6 +90,7 @@ function ConfirmAndDeploy({
             'Login failed. Please contact support@platform9.com for assistance.',
           working: false,
         })
+        clearState()
         return authenticatedResponse
       }
     }

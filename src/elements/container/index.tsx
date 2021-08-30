@@ -15,15 +15,18 @@ import { SegmentAnalytics } from '../../analytics'
 // Elements
 import Icon from '../icon'
 import UnsureModal from './unsure-modal'
+import Text from '../text'
 
 type Props = PropsWithChildren<{
   className?: string
   rightPanel?: boolean
   previousPane?: ViewPanes
+  title?: string
 }>
 
 function Container({
   className = '',
+  title = '',
   children,
   rightPanel,
   showUnsureModal,
@@ -35,28 +38,33 @@ function Container({
     navigate(previousPane!)
   }
   return (
-    <article
-      id="uiSignupElementsContainer"
-      className={!!rightPanel ? `uiSignupElementsContainer-full-width ${className}` : className}
-    >
-      {previousPane && (
-        <Icon
-          icon="left-arrow"
-          size={24}
-          className="uiSignupElementsContainerBackArrow"
-          onClick={handleBack}
-        />
-      )}
-      {showUnsureModal && (
-        <UnsureModal onClose={() => setContextValue({ showUnsureModal: false })} />
-      )}
-      <section>{children}</section>
-      {rightPanel && (
-        <aside>
-          <img alt="management-plane" src={managementPlaneURL} />
-        </aside>
-      )}
-    </article>
+    <div>
+      <Text variant="h3" className="uiSignupAppMainTitle">
+        Get started with Platform9.
+      </Text>
+      <article
+        id="uiSignupElementsContainer"
+        className={!!rightPanel ? `uiSignupElementsContainer-full-width ${className}` : className}
+      >
+        {previousPane && (
+          <Icon
+            icon="left-arrow"
+            size={24}
+            className="uiSignupElementsContainerBackArrow"
+            onClick={handleBack}
+          />
+        )}
+        {showUnsureModal && (
+          <UnsureModal onClose={() => setContextValue({ showUnsureModal: false })} />
+        )}
+        <section>{children}</section>
+        {rightPanel && (
+          <aside>
+            <img alt="management-plane" src={managementPlaneURL} />
+          </aside>
+        )}
+      </article>
+    </div>
   )
 }
 
