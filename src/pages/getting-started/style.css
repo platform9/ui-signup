@@ -51,8 +51,7 @@
 }
 .uiSignupPagesGettingStartedLogoStrip {
   display: grid;
-  /* logo size needs to be px */
-  grid-template-columns: repeat(6, minmax(auto, 132px));
+  grid-template-columns: repeat(6, minmax(auto, 8.25rem));
   max-width: 75rem;
   gap: 5rem;
   margin: 0;

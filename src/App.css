@@ -100,7 +100,7 @@
     grid-template-columns: unset;
   }
   #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
-    grid-template-columns: repeat(2, minmax(auto, 132px));
+    grid-template-columns: repeat(3, minmax(auto, 8.25rem));
     justify-content: center;
   }
 }
@@ -109,11 +109,13 @@
   html {
     font-size: 13px !important;
   }
-  #uiSignupAppMainEntry {
-    justify-items: stretch !important;
-    justify-content: stretch !important;
-  }
   #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
-    width: auto;
+    width: max-content;
+    padding: 0 3rem;
+    background-color: var(--grey-800);
+  }
+  #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
+    grid-template-columns: repeat(2, minmax(auto, 8.25rem));
+    justify-content: center;
   }
 }
