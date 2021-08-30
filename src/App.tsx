@@ -1,15 +1,23 @@
-import React from 'react'
+// Styles
 import './App.css'
-// import logo from './logo.svg'
-import Text from './elements/text'
+
+// Libs
+import React from 'react'
+
+// App
+import { segmentKey, ViewPanes } from './constants'
+import { AppContext, appDefaultState, IAppContext } from './context'
+import { syncState, rehydrateState, findActiveView } from './helpers'
+import browserHistory from './history'
+import { SegmentAnalytics } from './analytics'
+
+// Pages
 import GettingStarted from './pages/getting-started'
 import CreateUser from './pages/create-user'
 import ConfirmAndDeploy from './pages/confirm-and-deploy'
-import { ViewPanes } from './constants'
-import { AppContext, appDefaultState, IAppContext } from './context'
-import { syncState, rehydrateState, findActiveView } from './helpers'
 
-import browserHistory from './history'
+// Elements
+import Text from './elements/text'
 
 const viewByActiveType = {
   [ViewPanes.GettingStarted]: GettingStarted,
@@ -35,6 +43,7 @@ const defaultState = {
 
 class App extends React.Component<any, IAppContext> {
   componentDidMount() {
+    SegmentAnalytics.init(segmentKey)
     window.addEventListener('popstate', this.handleLocationChange)
     browserHistory.onChange((route, action) => {
       // these location changes are only a search change because I don't control

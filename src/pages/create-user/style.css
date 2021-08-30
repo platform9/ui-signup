@@ -3,7 +3,7 @@
   display: grid;
   grid-auto-flow: row;
   justify-items: center;
-  gap: 18px;
+  gap: 1.125rem;
   text-align: center;
 }
 .uiSignupPagesCreateUserFormTitleContainer {
@@ -11,5 +11,5 @@
   align-items: center;
 }
 #uiSignupElementsContainer.uiSignupPagesCreateUserContainer > section {
-  padding-bottom: 32px;
+  padding-bottom: 2rem;
 }

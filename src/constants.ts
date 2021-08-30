@@ -33,3 +33,5 @@ export const sandboxFqdn = 'https://sandbox-pmk.platform9.net'
 export const apiUrl = 'https://embark-prod.platform9.horse'
 export const managementPlaneURL =
   'https://platformninesg.wpengine.com/wp-content/uploads/2021/08/management-plane.svg'
+
+export const segmentKey = '3efmKtp2YW5l9XeaTDo03K5z0pygtPFJ'

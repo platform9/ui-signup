@@ -1,6 +1,10 @@
 import { ViewPanes } from './constants'
 import { IAppContext, IAppState } from './context'
 
+export function pxToRem(px) {
+  return `${px / 16}rem`
+}
+
 export const getElementProps = (props: any = {}): any => {
   const {
     setContextValue,
@@ -18,6 +22,9 @@ export const getElementProps = (props: any = {}): any => {
 
 export const syncState = (state: IAppState) => {
   localStorage.setItem('uiSignupAppState', JSON.stringify(state))
+}
+export const clearState = () => {
+  localStorage.removeItem('uiSignupAppState')
 }
 
 export const getActivePaneFromUrl = (search) => {

@@ -14,6 +14,11 @@ export const makeRequest = async <T>(
     if (!options) options = {}
     options.method = options.method || 'GET'
 
+    const isJson = options.isJson === undefined ? true : options.isJson
+    if (options.hasOwnProperty('isJson')) {
+      delete options.isJson
+    }
+
     if (options.body && (options.method === 'POST' || options.method === 'PUT')) {
       options.body = JSON.stringify(options.body)
     } else if (options.body) {
@@ -31,7 +36,8 @@ export const makeRequest = async <T>(
     options.headers = headers
 
     const response = await fetch(url, options as any)
-    const json = await response.json()
+    let target = isJson ? 'json' : 'text'
+    const json = await response[target]()
     if (!response.ok) {
       throw new Error(json?.message || json)
     }
@@ -47,6 +53,7 @@ export interface IRequestOptions {
   method?: string
   headers?: Headers | object
   credentials?: Request['credentials']
+  isJson?: boolean
 }
 
 export interface MakeRequest<T> {
