@@ -7,7 +7,7 @@ import React from 'react'
 // App
 import { segmentKey, ViewPanes } from './constants'
 import { AppContext, appDefaultState, IAppContext } from './context'
-import { syncState, rehydrateState, findActiveView } from './helpers'
+import { syncState, rehydrateState, findActiveView, getEmailFromUrl } from './helpers'
 import browserHistory from './history'
 import { SegmentAnalytics } from './analytics'
 
@@ -32,7 +32,7 @@ const defaultState = {
     firstName: '',
     lastName: '',
     organizationName: '',
-    organizationEmail: '',
+    organizationEmail: getEmailFromUrl() || '',
   },
   embarkUser: {
     vcode: '',

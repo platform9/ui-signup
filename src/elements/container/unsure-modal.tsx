@@ -3,6 +3,7 @@ import React from 'react'
 
 // App
 import { SegmentAnalytics } from '../../analytics'
+import { signupDemoURL } from '../../constants'
 
 // Elements
 import Button from '../button'
@@ -25,7 +26,7 @@ export default function UnsureModal({ onClose }) {
           <Button onClick={onClose} variant="secondary">
             Explore Later
           </Button>
-          <Button onClick={handleViewLiveDemo} href="https://youtu.be/kC_Jfd-Nucg" target="_blank">
+          <Button onClick={handleViewLiveDemo} href={signupDemoURL} target="_blank">
             View Platform9 Demo
           </Button>
         </footer>

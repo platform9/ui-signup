@@ -29,6 +29,8 @@ export const partnerLogoURLs = {
     'https://platform9.com/wp-content/uploads/2021/02/logo_cloudera_white.png',
 }
 
+export const signupDemoURL =
+  'https://platform9.com/resource/platform9-managed-kubernetes-free-demo/'
 export const sandboxFqdn = 'https://sandbox-pmk.platform9.net'
 export const apiUrl = 'https://embark-prod.platform9.horse'
 export const managementPlaneURL =
