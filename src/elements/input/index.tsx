@@ -9,7 +9,7 @@ import { PropsWithContext, withAppContext } from '../../context'
 import { getElementProps } from '../../helpers'
 
 // Elements
-import Text, { typography } from '../text'
+import Text from '../text'
 import InfoTooltip from './info-tooltip'
 
 interface Props
@@ -29,9 +29,8 @@ function Input({ accessor, label, error, info, helpText, ...props }: PropsWithCo
     <div className="uiSignupElementsInputContainer floating-label-wrap">
       <input
         id={`uiSignupElementsInput${props.name}`}
-        className="uiSignupElementsInput floating-label-field"
+        className="uiSignupElementsInput uiSignupElementsTextinputPlaceholder floating-label-field"
         value={accessor[props.name]}
-        style={{ ...typography.inputPlaceholder }}
         placeholder={label}
         {...rest}
       />

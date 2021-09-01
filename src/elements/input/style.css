@@ -1,26 +1,26 @@
 .uiSignupElementsInput {
   background: transparent;
-  height: 50px;
+  height: 3.125rem;
   border-color: var(--grey-200) !important;
-  padding-left: 16px;
+  padding-left: 1rem;
   color: var(--grey-000) !important;
   margin: 0 !important;
   border-radius: 0 !important;
-  min-width: 280px;
+  min-width: 17.5rem;
   padding-top: calc(1.5em + 2px) !important;
 }
 
 .uiSignupElementsInputContainer.floating-label-wrap {
   display: grid;
   grid-auto-flow: row;
-  padding-top: 6px;
+  padding-top: 0.375rem;
   margin-bottom: 0 !important;
   position: relative;
 }
 
 /* override */
 .uiSignupElementsInput.floating-label-field + .floating-label {
-  top: 20px !important;
+  top: 1.25rem !important;
   background: var(--grey-800) !important;
   color: var(--grey-500) !important;
   text-transform: uppercase !important;
@@ -30,15 +30,15 @@
 .uiSignupElementsInput.floating-label-field:not(:placeholder-shown) + .floating-label {
   background: var(--grey-800) !important;
   color: var(--grey-300) !important;
-  transform: translate(0, -21px) scale(0.9) !important;
-  padding: 0 6px !important;
+  transform: translate(0, -1.3125rem) scale(0.9) !important;
+  padding: 0 0.375rem !important;
 }
 
 /* tooltip */
 .uiSignupElementsInputInfoIconContainer {
   position: absolute;
-  top: 24px;
-  right: -32px;
+  top: 1.5rem;
+  right: -2rem;
 }
 .uiSignupElementsInputInfoIcon {
   position: relative;
@@ -52,16 +52,16 @@
 .uiSignupElementsInputInfoTooltip {
   display: grid;
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 0.5rem);
   right: 0;
   z-index: 9999;
 
-  min-width: 150px;
-  padding: 14px;
+  min-width: 9.375rem;
+  padding: 0.875rem;
 
   background-color: var(--grey-800);
-  border: 1px solid var(--grey-500);
-  border-radius: 4px;
+  border: 0.0625rem solid var(--grey-500);
+  border-radius: 0.25rem;
 
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.2s ease;

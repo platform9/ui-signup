@@ -137,6 +137,7 @@ export const authenticateUser = async (organizationName, { email, password, fqdn
   })
 
   const keystoneResponse = await makeRequest(`${fqdn}/token2cookie/`, {
+    isJson: false,
     headers: {
       'X-Auth-Token': scopedToken,
     },

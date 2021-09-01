@@ -1,6 +1,10 @@
 import { ViewPanes } from './constants'
 import { IAppContext, IAppState } from './context'
 
+export function pxToRem(px) {
+  return `${px / 16}rem`
+}
+
 export const getElementProps = (props: any = {}): any => {
   const {
     setContextValue,
@@ -19,7 +23,13 @@ export const getElementProps = (props: any = {}): any => {
 export const syncState = (state: IAppState) => {
   localStorage.setItem('uiSignupAppState', JSON.stringify(state))
 }
-
+export const clearState = () => {
+  localStorage.removeItem('uiSignupAppState')
+}
+export const getEmailFromUrl = (search = window.location.search) => {
+  const searchParams = new URLSearchParams(search)
+  return searchParams.get('email')
+}
 export const getActivePaneFromUrl = (search) => {
   const searchParams = new URLSearchParams(search)
   const activePane = searchParams.get('view') as ViewPanes
@@ -51,7 +61,10 @@ export const rehydrateState = (defaultState): IAppState => {
   let parsedState = {} as IAppState
   try {
     parsedState = JSON.parse(localStorage.getItem('uiSignupAppState') || '')
-    syncState(parsedState)
+    const defaultEmail = getEmailFromUrl() || ''
+    if (defaultEmail && !parsedState?.user?.organizationEmail) {
+      parsedState.user.organizationEmail = defaultEmail
+    }
   } catch (e) {
     parsedState = defaultState
   }

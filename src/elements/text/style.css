@@ -24,3 +24,177 @@
 .uiSignupElementsTextRed500 {
   color: var(--red-500);
 }
+
+.uiSignupElementsTexth1 {
+  font-family: Eina04-Bold;
+  font-size: 3.125rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.24;
+  letter-spacing: -0.03125rem;
+}
+.uiSignupElementsTexth2 {
+  font-family: Eina04-Bold;
+  font-size: 2.3125rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: -0.023125rem;
+}
+.uiSignupElementsTexth3 {
+  font-family: Eina04-Bold;
+  font-size: 1.75rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.0175rem;
+}
+.uiSignupElementsTextsubtitle1 {
+  font-family: Eina04-SemiBold;
+  font-size: 1.3125rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: -0.013125rem;
+}
+.uiSignupElementsTextinputPlaceholder {
+  font-family: Eina04-Regular;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.11;
+  letter-spacing: -0.01875rem;
+}
+.uiSignupElementsTextsubtitle2 {
+  font-family: Eina04-SemiBold;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.01rem;
+}
+.uiSignupElementsTextnav {
+  font-family: Eina04-SemiBold;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.uiSignupElementsTextbuttonPrimary {
+  font-family: Eina04-SemiBold;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.01125rem;
+}
+.uiSignupElementsTextbody1 {
+  font-family: Eina04-Regular;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.uiSignupElementsTexth4 {
+  font-family: Eina04-SemiBold;
+  font-size: 0.875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.uiSignupElementsTextcaption1 {
+  font-family: Eina04-SemiBold;
+  font-size: 0.875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.uiSignupElementsTextbuttonSecondary {
+  font-family: Eina04-SemiBold;
+  font-size: 0.875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.01rem;
+}
+
+.uiSignupElementsTextinputTable {
+  font-family: Eina04-Regular;
+  font-size: 0.875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: -0.014375rem;
+}
+.uiSignupElementsTextbody2 {
+  font-family: Eina04-Regular;
+  font-size: 0.875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.uiSignupElementsTextsidenav {
+  font-family: Eina04-SemiBold;
+  font-size: 0.8125rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.0125rem;
+}
+.uiSignupElementsTextinputLabel {
+  font-family: Eina04-SemiBold;
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.0125rem;
+}
+.uiSignupElementsTextcaption2 {
+  font-family: Eina04-SemiBold;
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: -0.0075rem;
+}
+.uiSignupElementsTextcaption4 {
+  font-family: Eina04-SemiBold;
+  font-size: 0.6875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.006875rem;
+}
+.uiSignupElementsTextcaption3 {
+  font-family: Eina04-Regular;
+  font-size: 0.6875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.006875rem;
+}

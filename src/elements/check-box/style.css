@@ -2,10 +2,10 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .uiSignupPagesCreateUserFormTOS {
-  grid-template-columns: max-content minmax(150px, 300px);
+  grid-template-columns: max-content minmax(9.375rem, 18.75rem);
 }
 .uiSignupPagesCreateUserFormTOS .uiSignupElementsCheckBoxLabelMessage {
   display: flex;
@@ -13,7 +13,7 @@
   white-space: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 0.25rem;
 }
 .uiSignupPagesCreateUserFormTOS .uiSignupElementsCheckBoxAdornment {
   align-self: start;
@@ -35,10 +35,10 @@
 .uiSignupElementsCheckBoxAdornment {
   background-color: transparent;
   cursor: pointer;
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--grey-500);
-  border-radius: 2px;
+  width: 1rem;
+  height: 1rem;
+  border: 0.0625rem solid var(--grey-500);
+  border-radius: 0.125rem;
 }
 .uiSignupElementsCheckBoxAdornment:hover {
   background-color: rgba(0, 0, 0, 0.2);

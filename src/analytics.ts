@@ -2,6 +2,10 @@ type IWindow = Window & { analytics: any }
 declare var window: IWindow
 
 export const SegmentAnalytics = {
+  init: (key) => {
+    if (!window.analytics) return
+    window.analytics.load(key)
+  },
   page: (name, details) => {
     if (!window.analytics) return
     window.analytics.page(name, details)

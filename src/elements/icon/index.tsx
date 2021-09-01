@@ -4,6 +4,9 @@ import './style.css'
 // Libs
 import React from 'react'
 
+// App
+import { pxToRem } from '../../helpers'
+
 interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   icon: keyof typeof icons
   size?: number
@@ -12,9 +15,10 @@ interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement
 }
 
 export default function Icon({ icon, size = 16, color = '', className = '', ...props }: Props) {
+  const remSize = pxToRem(size)
   return (
     <i
-      style={{ width: size, height: size }}
+      style={{ width: remSize, height: remSize }}
       className={`uiSignupElementsIcon uiSignupElementsIcon${color} ${className}`}
       {...props}
     >
@@ -56,8 +60,8 @@ const icons = {
   ),
   done: (
     <svg
-      width="12px"
-      height="9px"
+      width="0.75rem"
+      height="0.5625rem"
       viewBox="0 0 12 9"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

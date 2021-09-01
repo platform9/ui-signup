@@ -29,14 +29,93 @@
 #uiSignupAppMainEntry {
   background-color: var(--grey-900);
   display: grid;
+  justify-items: center;
   justify-content: center;
   grid-auto-flow: row;
   grid-auto-rows: max-content;
   gap: 2rem;
+  padding: 0 1.25rem;
   padding-top: 7.5rem;
 }
 
 .uiSignupAppMainTitle {
   color: var(--grey-000);
   margin-left: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width,
+  #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
+    min-height: auto;
+    width: 940px;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer aside img {
+    max-width: 21.875rem;
+  }
+  #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
+    grid-template-columns: 1fr max-content;
+  }
+  #uiSignupAppMainEntry
+    #uiSignupPagesGettingStartedForm
+    .uiSignupPagesGettingStartedFooterErrorMessage {
+    align-self: unset;
+    justify-self: unset;
+  }
+  #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
+    gap: 2.5rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 15px !important;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+    grid-template-columns: unset;
+    width: 31.25rem;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
+    width: auto;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer aside {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px !important;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+    width: 31.25rem;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
+    padding: 2rem 2rem 2.75rem;
+  }
+  #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
+    grid-template-columns: unset;
+    justify-items: start;
+    gap: 1.375rem;
+  }
+  #uiSignupAppMainEntry #uiSignupPagesGettingStartedCallouts {
+    grid-template-columns: unset;
+  }
+  #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
+    grid-template-columns: repeat(3, minmax(auto, 8.25rem));
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 13px !important;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+    width: max-content;
+    padding: 0 3rem;
+    background-color: var(--grey-800);
+  }
+  #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
+    grid-template-columns: repeat(2, minmax(auto, 8.25rem));
+    justify-content: center;
+  }
 }

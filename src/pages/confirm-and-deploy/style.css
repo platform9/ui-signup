@@ -2,18 +2,18 @@
   display: grid;
   align-items: center;
   justify-items: start;
-  margin-left: 16px;
+  margin-left: 1rem;
 }
 .uiSignupPagesConfirmAndDeployPasswordValidatorCheckContainer {
   display: grid;
   grid-auto-flow: column;
   align-items: center;
   justify-items: start;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .uiSignupPagesConfirmAndDeployPasswordValidatorCheck {
-  width: 12px;
-  height: 16px;
+  width: 0.75rem;
+  height: 1rem;
   display: grid;
   align-items: center;
 }
