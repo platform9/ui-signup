@@ -26,7 +26,7 @@ type Props = PropsWithChildren<{
 
 function Container({
   className = '',
-  title = '',
+  title = 'Get started with Platform9',
   children,
   rightPanel,
   showUnsureModal,
@@ -40,7 +40,7 @@ function Container({
   return (
     <div>
       <Text variant="h3" className="uiSignupAppMainTitle">
-        Get started with Platform9.
+        {title}
       </Text>
       <article
         id="uiSignupElementsContainer"

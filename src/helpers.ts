@@ -26,10 +26,12 @@ export const syncState = (state: IAppState) => {
 export const clearState = () => {
   localStorage.removeItem('uiSignupAppState')
 }
-export const getEmailFromUrl = (search = window.location.search) => {
-  const searchParams = new URLSearchParams(search)
-  return searchParams.get('email')
-}
+export const getSearchValueFromUrl =
+  (target) =>
+  (search = window.location.search) => {
+    const searchParams = new URLSearchParams(search)
+    return searchParams.get(target)
+  }
 export const getActivePaneFromUrl = (search) => {
   const searchParams = new URLSearchParams(search)
   const activePane = searchParams.get('view') as ViewPanes
@@ -57,13 +59,38 @@ export const getActivePaneFromState = (state: IAppContext) => {
   return ViewPanes.GettingStarted
 }
 
+export const getDefaultEmail = getSearchValueFromUrl('email')
+export const getDefaultOrganizationName = getSearchValueFromUrl('accountName')
+export const getDefaultVcode = getSearchValueFromUrl('vcode')
+export const getDefaultFirstName = getSearchValueFromUrl('firstName')
+export const getDefaultLastName = getSearchValueFromUrl('lastName')
+
 export const rehydrateState = (defaultState): IAppState => {
   let parsedState = {} as IAppState
   try {
-    parsedState = JSON.parse(localStorage.getItem('uiSignupAppState') || '')
-    const defaultEmail = getEmailFromUrl() || ''
-    if (defaultEmail && !parsedState?.user?.organizationEmail) {
+    const newState = JSON.parse(localStorage.getItem('uiSignupAppState') || '')
+    if (newState) parsedState = newState
+    const defaultEmail = getDefaultEmail() || ''
+    const defaultOrganizationName = getDefaultOrganizationName() || ''
+    const defaultVcode = getDefaultVcode() || ''
+    const defaultFirstName = getDefaultFirstName() || ''
+    const defaultLastName = getDefaultLastName() || ''
+    if (!parsedState.user) parsedState.user = {} as IAppState['user']
+    if (!parsedState.embarkUser) parsedState.embarkUser = {} as IAppState['embarkUser']
+    if (defaultFirstName) {
+      parsedState.user.firstName = defaultFirstName
+    }
+    if (defaultLastName) {
+      parsedState.user.lastName = defaultLastName
+    }
+    if (defaultEmail) {
       parsedState.user.organizationEmail = defaultEmail
+    }
+    if (defaultOrganizationName) {
+      parsedState.user.organizationName = defaultOrganizationName
+    }
+    if (defaultVcode) {
+      parsedState.embarkUser.vcode = defaultVcode
     }
   } catch (e) {
     parsedState = defaultState

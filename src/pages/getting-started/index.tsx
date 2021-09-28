@@ -55,10 +55,8 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
   return (
     <>
       <Container>
-        <Text variant="h2">
-          Kubernetes as a Service on Any Cloud;
-          <br />
-          Public, Private & Edge
+        <Text variant="h2" className="uiSignupPagesGettingStartedTitle uiSignupElementsTextGrey000">
+          Kubernetes as a Service on Any Cloud; Public, Private & Edge
         </Text>
         <footer
           id="uiSignupPagesGettingStartedFooter"
@@ -73,7 +71,7 @@ function GettingStarted({ children, deployTarget, setContextValue }: PropsWithCo
                 name={DeployTargets.Import}
                 checked={deployTarget === DeployTargets.Import}
                 onChange={() => handleChange(DeployTargets.Import)}
-                label="I have an existing EKS, AKs or GKE cluser to import."
+                label="I have an existing EKS, AKS or GKE cluser to import."
                 className={error ? 'uiSignupError' : ''}
               />
               <CheckBox
