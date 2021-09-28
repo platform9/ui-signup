@@ -94,7 +94,8 @@
   #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
     grid-template-columns: unset;
     justify-items: start;
-    gap: 1.375rem;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
   }
   #uiSignupAppMainEntry #uiSignupPagesGettingStartedCallouts {
     grid-template-columns: unset;
@@ -102,6 +103,10 @@
   #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
     grid-template-columns: repeat(3, minmax(auto, 8.25rem));
     justify-content: center;
+  }
+  #uiSignupAppMainEntry .uiSignupPagesCreateUserFormTOS,
+  #uiSignupElementsContainer section > a.uiSignupElementsLink {
+    margin: 1rem 0;
   }
 }
 

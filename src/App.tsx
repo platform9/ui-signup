@@ -7,7 +7,16 @@ import React from 'react'
 // App
 import { segmentKey, ViewPanes } from './constants'
 import { AppContext, appDefaultState, IAppContext } from './context'
-import { syncState, rehydrateState, findActiveView, getEmailFromUrl } from './helpers'
+import {
+  syncState,
+  rehydrateState,
+  findActiveView,
+  getDefaultEmail,
+  getDefaultOrganizationName,
+  getDefaultVcode,
+  getDefaultFirstName,
+  getDefaultLastName,
+} from './helpers'
 import browserHistory from './history'
 import { SegmentAnalytics } from './analytics'
 
@@ -29,13 +38,13 @@ const defaultState = {
   ...appDefaultState,
   activePane: ViewPanes.GettingStarted,
   user: {
-    firstName: '',
-    lastName: '',
-    organizationName: '',
-    organizationEmail: getEmailFromUrl() || '',
+    firstName: getDefaultFirstName() || '',
+    lastName: getDefaultLastName() || '',
+    organizationName: getDefaultOrganizationName() || '',
+    organizationEmail: getDefaultEmail() || '',
   },
   embarkUser: {
-    vcode: '',
+    vcode: getDefaultVcode() || '',
     password: '',
     confirmPassword: '',
   },

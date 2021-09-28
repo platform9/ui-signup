@@ -12,6 +12,10 @@
   list-style: disc;
 }
 
+.uiSignupPagesGettingStartedTitle {
+  max-width: 41.875rem;
+}
+
 #uiSignupPagesGettingStartedFooter {
   border: 0.125rem solid transparent;
   background-color: var(--grey-800);
