@@ -9,7 +9,6 @@ import { segmentKey, ViewPanes } from './constants'
 import { AppContext, appDefaultState, IAppContext } from './context'
 import {
   syncState,
-  rehydrateState,
   findActiveView,
   getDefaultEmail,
   getDefaultOrganizationName,
@@ -21,22 +20,19 @@ import browserHistory from './history'
 import { SegmentAnalytics } from './analytics'
 
 // Pages
-import GettingStarted from './pages/getting-started'
+// import GettingStarted from './pages/getting-started'
 import CreateUser from './pages/create-user'
 import ConfirmAndDeploy from './pages/confirm-and-deploy'
 
-// Elements
-import Text from './elements/text'
-
 const viewByActiveType = {
-  [ViewPanes.GettingStarted]: GettingStarted,
+  [ViewPanes.GettingStarted]: CreateUser,
   [ViewPanes.CreateUser]: CreateUser,
   [ViewPanes.ConfirmAndDeploy]: ConfirmAndDeploy,
 }
 
 const defaultState = {
   ...appDefaultState,
-  activePane: ViewPanes.GettingStarted,
+  activePane: ViewPanes.CreateUser,
   user: {
     firstName: getDefaultFirstName() || '',
     lastName: getDefaultLastName() || '',
@@ -80,7 +76,7 @@ class App extends React.Component<any, IAppContext> {
   }
 
   state = {
-    ...rehydrateState(defaultState),
+    ...defaultState,
     setContextValue: this.setContextValue,
   }
 
