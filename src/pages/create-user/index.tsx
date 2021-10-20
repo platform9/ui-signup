@@ -118,7 +118,7 @@ function CreateUser({
           <Input
             accessor={user}
             name="organizationName"
-            label="Organization Name"
+            label="Platform9 Account Name"
             onChange={handleInputChange}
             error={formErrors.organizationName}
             info="The unique name used to identify your Platform9 Instance. Must be lowercase only."
@@ -126,7 +126,7 @@ function CreateUser({
           <Input
             accessor={user}
             name="organizationEmail"
-            label="Organization Email"
+            label="Account Email"
             onChange={handleInputChange}
             error={formErrors.organizationEmail}
             info="Your work email to use as your account login."
