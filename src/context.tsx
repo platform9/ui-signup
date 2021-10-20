@@ -27,7 +27,7 @@ export const appDefaultState: IAppContext = {
   setContextValue: (payload) => {
     console.error('AppContext not found')
   },
-  activePane: ViewPanes.GettingStarted,
+  activePane: ViewPanes.CreateUser,
   deployTarget: undefined,
   termsAccepted: false,
   showUnsureModal: false,
