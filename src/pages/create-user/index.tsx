@@ -84,15 +84,12 @@ function CreateUser({
     return true
   }
   return (
-    <Container
-      rightPanel
-      previousPane={ViewPanes.GettingStarted}
-      className="uiSignupPagesCreateUserContainer"
-    >
+    <Container className="uiSignupPagesCreateUserContainer">
       <form id="uiSignupPagesCreateUserForm">
         <div className="uiSignupPagesCreateUserFormTitleContainer">
           <Text variant="h3" className="uiSignupElementsTextBlue200">
-            Tell us more about yourself
+            Get Started with <br />
+            Kubernetes for Free
           </Text>
           {feedbackState.error && (
             <Text variant="caption2" className="uiSignupElementsTextRed500">
@@ -101,20 +98,22 @@ function CreateUser({
           )}
         </div>
         <div>
-          <Input
-            accessor={user}
-            name="firstName"
-            label="First Name"
-            onChange={handleInputChange}
-            error={formErrors.firstName}
-          />
-          <Input
-            accessor={user}
-            name="lastName"
-            label="Last Name"
-            onChange={handleInputChange}
-            error={formErrors.lastName}
-          />
+          <div className="uiSignupPagesCreateUserFormNameFields">
+            <Input
+              accessor={user}
+              name="firstName"
+              label="First Name"
+              onChange={handleInputChange}
+              error={formErrors.firstName}
+            />
+            <Input
+              accessor={user}
+              name="lastName"
+              label="Last Name"
+              onChange={handleInputChange}
+              error={formErrors.lastName}
+            />
+          </div>
           <Input
             accessor={user}
             name="organizationName"
@@ -131,36 +130,22 @@ function CreateUser({
             error={formErrors.organizationEmail}
             info="Your work email to use as your account login."
           />
-          <CheckBox
-            name="terms-privacy"
-            checked={!!termsAccepted}
-            error={formErrors.privacyTerms}
-            onChange={handleTermsChange}
-            variant="body2"
-            label={[
-              'By signing up, I agree to the ',
-              <Link href="/terms-conditions/" target="_blank" fixWhitespace={false}>
-                Terms of Service
-              </Link>,
-              ' and ',
-              <Link href="/terms-conditions/privacy/" target="_blank" fixWhitespace={false}>
-                Privacy Policy
-              </Link>,
-            ]}
-            className={
-              formErrors.privacyTerms
-                ? 'uiSignupError uiSignupPagesCreateUserFormTOS'
-                : 'uiSignupPagesCreateUserFormTOS'
-            }
-          />
         </div>
-        <Button onClick={handleFormSubmit} nextArrow disabled={feedbackState.working}>
+        <Button onClick={handleFormSubmit} icon="right-arrow" disabled={feedbackState.working}>
           Continue
         </Button>
+        <Text variant="body2">
+          By signing up, I agree to Platform9's{' '}
+          <Link href="/terms-conditions/" target="_blank" fixWhitespace={false}>
+            Terms of Service
+          </Link>{' '}
+          and{' '}
+          <Link href="/terms-conditions/privacy/" target="_blank" fixWhitespace={false}>
+            Privacy Policy
+          </Link>
+          .
+        </Text>
       </form>
-      <Link onClick={() => setContextValue({ showUnsureModal: true })}>
-        Not ready to deploy yet?
-      </Link>
     </Container>
   )
 }

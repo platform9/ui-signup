@@ -8,13 +8,12 @@ import React, { PropsWithChildren } from 'react'
 import { navigate } from '../../net/actions'
 
 // App
-import { managementPlaneURL, ViewPanes } from '../../constants'
+import { ViewPanes } from '../../constants'
 import { PropsWithContext, withAppContext } from '../../context'
 import { SegmentAnalytics } from '../../analytics'
 
 // Elements
 import Icon from '../icon'
-import UnsureModal from './unsure-modal'
 import Text from '../text'
 
 type Props = PropsWithChildren<{
@@ -24,12 +23,19 @@ type Props = PropsWithChildren<{
   title?: string
 }>
 
+const calloutItems = [
+  '2 clusters, 8 nodes - free forever',
+  'Build clusters on bare metal, VMs, or public clouds',
+  'Import existing clusters from EKS, AKS, GKE',
+  'Provide any user with instant access to view, deploy and troubleshoot your apps',
+  'Centerally manage Kubernetes environments, upgrades, RBAC and more',
+]
+
 function Container({
   className = '',
-  title = 'Get started with Platform9',
+  title = 'Managed Kubernetes Anywhere - Fast & Easy.',
   children,
-  rightPanel,
-  showUnsureModal,
+  rightPanel = true,
   previousPane,
   setContextValue,
 }: PropsWithContext<Props>) {
@@ -38,14 +44,22 @@ function Container({
     navigate(previousPane!)
   }
   return (
-    <div>
-      <Text variant="h3" className="uiSignupAppMainTitle">
-        {title}
-      </Text>
-      <article
-        id="uiSignupElementsContainer"
-        className={!!rightPanel ? `uiSignupElementsContainer-full-width ${className}` : className}
-      >
+    <article
+      id="uiSignupElementsContainer"
+      className={!!rightPanel ? `uiSignupElementsContainer-full-width ${className}` : className}
+    >
+      <section>
+        <Text variant="h2">{title}</Text>
+        <ul id="uiSignupElementsContainerCallouts">
+          {calloutItems.map((item, index) => (
+            <li key={index} id="uiSignupElementsContainerCalloutItem">
+              <Icon icon="done" color="#0edf79" size={18} />
+              <Text variant="body-large">{item}</Text>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <aside>
         {previousPane && (
           <Icon
             icon="left-arrow"
@@ -54,17 +68,9 @@ function Container({
             onClick={handleBack}
           />
         )}
-        {showUnsureModal && (
-          <UnsureModal onClose={() => setContextValue({ showUnsureModal: false })} />
-        )}
-        <section>{children}</section>
-        {rightPanel && (
-          <aside>
-            <img alt="management-plane" src={managementPlaneURL} />
-          </aside>
-        )}
-      </article>
-    </div>
+        {children}
+      </aside>
+    </article>
   )
 }
 

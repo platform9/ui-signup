@@ -9,6 +9,7 @@ type Typography =
   | 'h2'
   | 'h3'
   | 'subtitle1'
+  | 'body-large'
   | 'inputPlaceholder'
   | 'subtitle2'
   | 'nav'

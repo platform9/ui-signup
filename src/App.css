@@ -26,6 +26,10 @@
   --orange-500: #ff8a00;
 }
 
+/* #uiSignupAppMainEntry * {
+  box-sizing: border-box;
+} */
+
 #uiSignupAppMainEntry {
   background-color: var(--grey-900);
   display: grid;
@@ -36,6 +40,9 @@
   gap: 2rem;
   padding: 0 1.25rem;
   padding-top: 7.5rem;
+  padding-bottom: 8.5rem;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .uiSignupAppMainTitle {
@@ -43,8 +50,11 @@
   margin-left: 1rem;
 }
 
-@media screen and (max-width: 1200px) {
-  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width,
+@media screen and (max-width: 1300px) {
+  html {
+    font-size: 15px !important;
+  }
+  /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width,
   #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
     min-height: auto;
     width: 940px;
@@ -63,7 +73,7 @@
   }
   #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
     gap: 2.5rem;
-  }
+  } */
 }
 @media screen and (max-width: 992px) {
   html {
@@ -76,7 +86,8 @@
   #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
     width: auto;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer aside {
+  #uiSignupAppMainEntry #uiSignupElementsContainer > section,
+  .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl > article {
     display: none;
   }
 }
@@ -85,13 +96,13 @@
   html {
     font-size: 14px !important;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+  /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: 31.25rem;
   }
   #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
     padding: 2rem 2rem 2.75rem;
-  }
-  #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
+  } */
+  /* #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
     grid-template-columns: unset;
     justify-items: start;
     gap: 2rem;
@@ -103,9 +114,9 @@
   #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
     grid-template-columns: repeat(3, minmax(auto, 8.25rem));
     justify-content: center;
-  }
+  } */
   #uiSignupAppMainEntry .uiSignupPagesCreateUserFormTOS,
-  #uiSignupElementsContainer section > a.uiSignupElementsLink {
+  #uiSignupElementsContainer aside > a.uiSignupElementsLink {
     margin: 1rem 0;
   }
 }
@@ -114,13 +125,13 @@
   html {
     font-size: 13px !important;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+  /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: max-content;
     padding: 0 3rem;
     background-color: var(--grey-800);
-  }
-  #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
+  } */
+  /* #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
     grid-template-columns: repeat(2, minmax(auto, 8.25rem));
     justify-content: center;
-  }
+  } */
 }

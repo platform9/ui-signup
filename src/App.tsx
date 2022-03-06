@@ -23,9 +23,9 @@ import { SegmentAnalytics } from './analytics'
 // import GettingStarted from './pages/getting-started'
 import CreateUser from './pages/create-user'
 import ConfirmAndDeploy from './pages/confirm-and-deploy'
+import PageBackdrop from './pages/page-backdrop'
 
 const viewByActiveType = {
-  [ViewPanes.GettingStarted]: CreateUser,
   [ViewPanes.CreateUser]: CreateUser,
   [ViewPanes.ConfirmAndDeploy]: ConfirmAndDeploy,
 }
@@ -46,7 +46,7 @@ const defaultState = {
   },
 }
 
-class App extends React.Component<any, IAppContext> {
+export default class App extends React.Component<any, IAppContext> {
   componentDidMount() {
     SegmentAnalytics.init(segmentKey)
     window.addEventListener('popstate', this.handleLocationChange)
@@ -81,15 +81,14 @@ class App extends React.Component<any, IAppContext> {
   }
 
   render() {
-    const ActiveView = viewByActiveType[this.state.activePane]
+    const ActiveView = viewByActiveType[this.state.activePane] || CreateUser
     return (
       <AppContext.Provider value={this.state}>
         <main id="uiSignupAppMainEntry">
+          <PageBackdrop />
           <ActiveView />
         </main>
       </AppContext.Provider>
     )
   }
 }
-
-export default App

@@ -116,10 +116,10 @@ function ConfirmAndDeploy({
     }, 5000)
   }
   return (
-    <Container rightPanel>
+    <Container>
       <form id="uiSignupPagesConfirmAndDeployForm">
         <Text variant="h3" className="uiSignupElementsTextBlue200">
-          You're almost done!
+          Verify your email address
         </Text>
         {feedbackState.error && (
           <Text variant="caption2" className="uiSignupElementsTextRed500">
@@ -169,7 +169,7 @@ function ConfirmAndDeploy({
           />
         </div>
         <Button onClick={handleFormSubmit} disabled={feedbackState.working}>
-          Deploy Free Trial Now
+          Complete Signup
         </Button>
       </form>
     </Container>

@@ -1,14 +1,13 @@
 #uiSignupElementsContainer {
   margin-top: 1.5rem;
-  position: relative;
-  width: 1120px;
-  min-height: 600px;
+  width: 75.625rem;
+  min-height: 37.5rem;
   display: grid;
   justify-items: stretch;
   align-items: stretch;
-  border-radius: 1rem;
-  border: solid 0.0625rem var(--grey-500);
-  overflow: hidden;
+  position: relative;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 #uiSignupElementsContainer aside img {
   max-width: 25rem;
@@ -22,8 +21,17 @@
 }
 #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
   padding: 0;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
+  gap: 5.625rem;
 }
+
+#uiSignupElementsContainer > section {
+  display: grid;
+  gap: 3.5rem;
+  grid-auto-rows: max-content;
+  padding-top: 4rem;
+}
+
 #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
   padding: 2.5rem 3rem 3.125rem 3rem;
   grid-auto-flow: row;
@@ -33,16 +41,21 @@
   display: grid;
   align-items: stretch;
   justify-items: stretch;
+  box-sizing: border-box;
 }
 
-#uiSignupElementsContainer.uiSignupElementsContainer-full-width > section {
+#uiSignupElementsContainer.uiSignupElementsContainer-full-width > aside {
+  position: relative;
   background-color: var(--grey-800);
   display: flex;
   flex-direction: column;
-  padding: 2.8125rem 0;
+  padding: 2.75rem 0 2.5rem 0;
   justify-content: flex-end;
   align-items: center;
   gap: 0.75rem;
+  border: solid 0.0625rem var(--grey-500);
+  border-radius: 1rem;
+  box-sizing: border-box;
 }
 #uiSignupElementsContainer > aside {
   display: grid;
@@ -90,4 +103,26 @@
   display: grid;
   grid-auto-flow: column;
   gap: 0.5rem;
+}
+
+#uiSignupElementsContainerCallouts {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: start;
+  gap: 1.25rem;
+  margin: 0;
+  padding-left: 1.5625rem;
+}
+#uiSignupElementsContainerCalloutItem {
+  color: var(--grey-000);
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  align-items: start;
+  grid-auto-columns: max-content 1fr;
+  grid-auto-flow: column;
+}
+
+#uiSignupElementsContainerCalloutItem i {
+  padding-top: 0.25rem;
 }

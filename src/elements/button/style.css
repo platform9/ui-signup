@@ -9,13 +9,7 @@
 .uiSignupElementsButtonLg {
   height: 3.5rem;
 }
-.uiSignupElementsButtonArrow {
-  grid-auto-flow: column;
-  grid-auto-columns: max-content max-content;
-  gap: 0.5625rem;
-}
-
-.uiSignupElementsButtonArrow {
+.uiSignupElementsButtonIcon {
   grid-auto-flow: column;
   grid-auto-columns: max-content max-content;
   gap: 0.5625rem;
