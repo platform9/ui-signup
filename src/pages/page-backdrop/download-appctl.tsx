@@ -19,7 +19,7 @@ export default function DownloadAppCtl() {
         </Text>
 
         <div className="uiSignupAppDownloadChoiceContainer">
-          <Button icon="download" onClick={handleClick}>
+          <Button icon="download" onClick={handleClick} color="secondary">
             Download Appctl
           </Button>
           <div className={`uiSignupAppDownloadOptionContainer${expanded ? ' open' : ''}`}>
@@ -52,7 +52,7 @@ export default function DownloadAppCtl() {
                 </a>
               </li>
             </ul>
-            <Text variant="body2" className="uiSignupElementsTextGrey200">
+            <Text variant="body2" className="uiSignupElementsTextGrey200 download-appctl-agreement">
               Use of appctl is subject to Platform9's{' '}
               <Link
                 href="/terms-conditions/"

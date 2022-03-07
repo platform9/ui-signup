@@ -22,7 +22,7 @@
 #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
   padding: 0;
   grid-template-columns: 1fr 1fr;
-  gap: 5.625rem;
+  gap: 6.5625rem;
 }
 
 #uiSignupElementsContainer > section {
@@ -49,10 +49,8 @@
   background-color: var(--grey-800);
   display: flex;
   flex-direction: column;
-  padding: 2.75rem 0 2.5rem 0;
-  justify-content: flex-end;
+  padding: 2.75rem 0 2rem 0;
   align-items: center;
-  gap: 0.75rem;
   border: solid 0.0625rem var(--grey-500);
   border-radius: 1rem;
   box-sizing: border-box;

@@ -11,6 +11,7 @@ import Text from '../text'
 interface Props
   extends React.DetailedHTMLProps<React.AllHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   variant?: 'primary' | 'secondary'
+  color?: 'primary' | 'secondary'
   icon?: ValidIcons
   container?: 'lg' | 'sm'
 }
@@ -20,6 +21,7 @@ export default function Button({
   container = 'sm',
   className = '',
   variant = 'primary',
+  color = 'primary',
   disabled = false,
   icon = undefined,
   onClick,
@@ -27,8 +29,10 @@ export default function Button({
 }: PropsWithChildren<Props>) {
   const disabledClass = disabled ? 'disabled' : ''
   const iconClass = !!icon ? 'uiSignupElementsButtonIcon' : ''
+  const colorClass = color === 'secondary' ? 'uiSignupElementsButton__pink' : ''
   const btn = `uiSignupElementsButton btn ${container === 'lg' ? 'uiSignupElementsButtonLg' : ''}`
-  const classes = `${btn} btn-${variant} ${disabledClass} ${iconClass} ${className}`.trim()
+  const classes =
+    `${btn} btn-${variant} ${disabledClass} ${iconClass} ${colorClass} ${className}`.trim()
 
   return (
     <a className={classes} {...props} onClick={!disabled ? onClick : undefined}>

@@ -43,6 +43,7 @@
   padding-bottom: 8.5rem;
   position: relative;
   box-sizing: border-box;
+  top: 5rem;
 }
 
 .uiSignupAppMainTitle {
@@ -54,13 +55,28 @@
   html {
     font-size: 15px !important;
   }
-  /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width,
-  #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
-    min-height: auto;
-    width: 940px;
+
+  #uiSignupAppMainEntry #uiSignupElementsContainer {
+    gap: 5rem;
+    width: 68.75rem;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer aside img {
-    max-width: 21.875rem;
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl article {
+    width: 68.75rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #uiSignupAppMainEntry #uiSignupElementsContainer {
+    width: 56.25rem;
+    gap: 3.125rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl {
+    bottom: -1.5625rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl article {
+    width: 56.25rem;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer aside {
+    padding: 2.75rem 3rem 2rem 3rem;
   }
   #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
     grid-template-columns: 1fr max-content;
@@ -73,21 +89,32 @@
   }
   #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
     gap: 2.5rem;
-  } */
+  }
 }
 @media screen and (max-width: 992px) {
   html {
     font-size: 15px !important;
   }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
+    align-items: end;
+    padding-bottom: 1rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl > article {
+    justify-items: center;
+    width: auto;
+    padding: 0 1.5rem;
+  }
   #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     grid-template-columns: unset;
+    width: 31.25rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl article {
     width: 31.25rem;
   }
   #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
     width: auto;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer > section,
-  .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl > article {
+  #uiSignupAppMainEntry #uiSignupElementsContainer > section {
     display: none;
   }
 }
@@ -95,6 +122,17 @@
 @media screen and (max-width: 768px) {
   html {
     font-size: 14px !important;
+  }
+  #uiSignupAppMainEntry {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
+    left: -2rem;
+    right: -2rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropGradient {
+    left: -2rem;
   }
   /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: 31.25rem;
@@ -125,6 +163,15 @@
   html {
     font-size: 13px !important;
   }
+  html body .wrapper #page-custom {
+    overflow: hidden;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+    width: auto;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer > aside {
+    padding: 2.75rem 2.5rem 2rem 2.5rem;
+  }
   /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: max-content;
     padding: 0 3rem;
@@ -134,4 +181,34 @@
     grid-template-columns: repeat(2, minmax(auto, 8.25rem));
     justify-content: center;
   } */
+}
+
+*:-webkit-autofill {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+}
+
+*:-webkit-autofill:hover {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+}
+*:-webkit-autofill:focus {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+}
+*:-webkit-autofill:active {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
 }

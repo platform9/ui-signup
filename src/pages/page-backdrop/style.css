@@ -7,6 +7,7 @@
   display: grid;
   align-items: start;
   justify-content: center;
+  min-height: 56.125rem;
 }
 .uiSignupAppPageBackdrop svg#platform9-management-plane {
   margin-top: 1.125rem;
@@ -23,9 +24,9 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 5%;
+  bottom: 0;
   box-sizing: border-box;
-  height: 240px;
+  height: 15rem;
 
   background-color: rgba(216, 32, 113, 0.16);
   display: grid;
@@ -54,12 +55,12 @@
 }
 .uiSignupAppDownloadOptionContainer {
   box-sizing: border-box;
-  min-width: 18.75rem;
+  min-width: 19.375rem;
   position: absolute;
   top: 100%;
   padding: 1.125rem 1.75rem 0.75rem;
-  margin: 0.625rem 0 0 0;
-  box-shadow: 0 0 6px 0 rgb(0 0 0 / 10%);
+  margin: 1rem 0 0 0;
+  box-shadow: 0 0 0.375rem 0 rgb(0 0 0 / 10%);
   background-color: var(--pink-500);
   z-index: 99;
 
@@ -90,30 +91,33 @@
 .uiSignupAppDownloadOptionContainer::before {
   content: '';
   position: absolute;
-  top: -8px;
+  top: -0.5rem;
   left: 1.625rem;
   width: 0;
   height: 0;
-  border-top: 8px solid var(--pink-500);
-  border-right: 8px solid var(--pink-500);
-  border-bottom: 8px solid transparent;
-  border-left: 8px solid transparent;
+  border-top: 0.5rem solid var(--pink-500);
+  border-right: 0.5rem solid var(--pink-500);
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid transparent;
   transform: rotate(-45deg);
 }
 
 .uiSignupAppDownloadOptionContainer ul.download-options li {
-  padding: 0.625rem 1.25rem;
   cursor: pointer;
   white-space: nowrap;
   list-style-type: none;
+  margin: 0;
 }
 
 .uiSignupAppDownloadOptionContainer ul.download-options li a {
-  display: block;
-  margin: -0.625rem -1.25rem;
-  padding: 0.75rem 2rem 0.75rem 3rem;
+  height: 2.75rem;
   color: var(--grey-000) !important;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.uiSignupAppDownloadOptionContainer ul.download-options li a:hover {
+  background-color: var(--pink-700);
 }
 
 .uiSignupAppDownloadOptionContainer ul.download-options li a span {
@@ -125,13 +129,11 @@
 .uiSignupAppDownloadOptionContainer ul.download-options li a#appctl-linux::before {
   content: '' !important;
   background-repeat: no-repeat;
-  position: absolute !important;
   display: inline-block;
-  left: 0;
-  background-position: 0% 50%;
+  background-position: 0 50%;
   height: 1.5rem;
   width: 1.5rem;
-  margin: -0.2rem 0 0 0.8rem !important;
+  margin: 0 0.75rem 0 0.75rem !important;
   opacity: 1 !important;
 }
 
@@ -143,4 +145,13 @@
 }
 .uiSignupAppDownloadOptionContainer ul.download-options li a#appctl-linux::before {
   background-image: url(https://platform9.com/wp-content/uploads/2022/01/icon_linux.svg);
+}
+
+.uiSignupAppDownloadChoiceContainer .download-appctl-agreement {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  justify-content: center;
 }

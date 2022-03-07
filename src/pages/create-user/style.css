@@ -6,10 +6,13 @@
   gap: 1.125rem;
   text-align: center;
   box-sizing: border-box;
+  max-width: 25.75rem;
+  margin-bottom: 2rem;
 }
 .uiSignupPagesCreateUserFormTitleContainer {
   display: grid;
   align-items: center;
+  flex: 1;
 }
 #uiSignupElementsContainer.uiSignupPagesCreateUserContainer > section {
   padding-bottom: 2rem;

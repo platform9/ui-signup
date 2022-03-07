@@ -21,18 +21,11 @@ import Button from '../../elements/button'
 
 // Validator
 import { formValidator } from './validator'
-import CheckBox from '../../elements/check-box'
 
 interface Props {}
 
 const nextView = ViewPanes.ConfirmAndDeploy
-function CreateUser({
-  setContextValue,
-  user,
-  formErrors,
-  termsAccepted,
-  ...props
-}: PropsWithContext<Props>) {
+function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithContext<Props>) {
   useEffect(() => {
     SegmentAnalytics.page('PMKFT Sign Up Page', {
       section: 'Launch Service',
@@ -43,30 +36,15 @@ function CreateUser({
     error: '',
     working: false,
   })
-  const handleTermsChange = () => {
-    setContextValue({ termsAccepted: !termsAccepted })
-  }
   const handleInputChange = (e) => {
     setContextValue({ user: { ...user, [e.target.name]: e.target.value } })
   }
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     const { foundErrors, hasError } = formValidator.validate(user)
-    if (!termsAccepted) {
-      foundErrors.privacyTerms = 'You must accept our Terms and Privacy Policy.'
-      SegmentAnalytics.track('WZ Sign-Up TOS Not Checked Error - 1', {
-        email: user.organizationEmail,
-        firstname: user.firstName,
-        lastname: user.lastName,
-        account_name: user.organizationName,
-        wizard_step: 'Web Sign Up Free Tier Create Account Submission Error',
-        wizard_state: 'Error',
-        wizard_progress: '1 of 2',
-        wizard_name: 'Web Sign Up Free Tier',
-      })
-    }
+
     setContextValue({ formErrors: foundErrors })
-    if (hasError || !termsAccepted) {
+    if (hasError) {
       setFeedbackState({ error: '', working: false })
       return false
     }
@@ -85,18 +63,18 @@ function CreateUser({
   }
   return (
     <Container className="uiSignupPagesCreateUserContainer">
-      <form id="uiSignupPagesCreateUserForm">
-        <div className="uiSignupPagesCreateUserFormTitleContainer">
-          <Text variant="h3" className="uiSignupElementsTextBlue200">
-            Get Started with <br />
-            Kubernetes for Free
+      <div className="uiSignupPagesCreateUserFormTitleContainer">
+        <Text variant="h3" className="uiSignupElementsTextBlue200">
+          Get Started with <br />
+          Kubernetes for Free
+        </Text>
+        {feedbackState.error && (
+          <Text variant="caption2" className="uiSignupElementsTextRed500">
+            {feedbackState.error}
           </Text>
-          {feedbackState.error && (
-            <Text variant="caption2" className="uiSignupElementsTextRed500">
-              {feedbackState.error}
-            </Text>
-          )}
-        </div>
+        )}
+      </div>
+      <form id="uiSignupPagesCreateUserForm">
         <div>
           <div className="uiSignupPagesCreateUserFormNameFields">
             <Input
@@ -134,18 +112,18 @@ function CreateUser({
         <Button onClick={handleFormSubmit} icon="right-arrow" disabled={feedbackState.working}>
           Continue
         </Button>
-        <Text variant="body2">
-          By signing up, I agree to Platform9's{' '}
-          <Link href="/terms-conditions/" target="_blank" fixWhitespace={false}>
-            Terms of Service
-          </Link>{' '}
-          and{' '}
-          <Link href="/terms-conditions/privacy/" target="_blank" fixWhitespace={false}>
-            Privacy Policy
-          </Link>
-          .
-        </Text>
       </form>
+      <Text variant="body2">
+        By signing up, I agree to Platform9's{' '}
+        <Link href="/terms-conditions/" target="_blank" fixWhitespace={false}>
+          Terms of Service
+        </Link>{' '}
+        and{' '}
+        <Link href="/terms-conditions/privacy/" target="_blank" fixWhitespace={false}>
+          Privacy Policy
+        </Link>
+        .
+      </Text>
     </Container>
   )
 }
