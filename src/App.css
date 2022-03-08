@@ -30,6 +30,20 @@
   box-sizing: border-box;
 } */
 
+html body .wrapper #header-signup {
+  background-color: transparent !important;
+}
+html body .wrapper #page-custom {
+  height: auto !important;
+  z-index: 10;
+  padding-top: 0 !important;
+}
+html body .wrapper #page-custom > div.ctn {
+  min-height: 53.5rem; /* svg backdrop height + margin */
+  max-width: unset;
+  padding: 0 !important;
+}
+
 #uiSignupAppMainEntry {
   background-color: var(--grey-900);
   display: grid;
@@ -43,7 +57,7 @@
   padding-bottom: 8.5rem;
   position: relative;
   box-sizing: border-box;
-  top: 5rem;
+  top: -4rem;
 }
 
 .uiSignupAppMainTitle {
@@ -70,7 +84,7 @@
     gap: 3.125rem;
   }
   #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl {
-    bottom: -1.5625rem;
+    bottom: 2rem;
   }
   #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl article {
     width: 56.25rem;
@@ -98,6 +112,7 @@
   #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
     align-items: end;
     padding-bottom: 1rem;
+    bottom: 0;
   }
   #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl > article {
     justify-items: center;
@@ -127,13 +142,13 @@
     padding-left: 0;
     padding-right: 0;
   }
-  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
+  /* #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
     left: -2rem;
     right: -2rem;
   }
   #uiSignupAppMainEntry .uiSignupAppPageBackdropGradient {
     left: -2rem;
-  }
+  } */
   /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: 31.25rem;
   }
@@ -167,10 +182,18 @@
     overflow: hidden;
   }
   #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
-    width: auto;
+    width: 100vw;
   }
   #uiSignupAppMainEntry #uiSignupElementsContainer > aside {
     padding: 2.75rem 2.5rem 2rem 2.5rem;
+    border: 0;
+    border-radius: 0;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop svg#platform9-management-plane {
+    display: none;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
+    background: none;
   }
   /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: max-content;
@@ -183,7 +206,7 @@
   } */
 }
 
-*:-webkit-autofill {
+/* *:-webkit-autofill {
   transition: background-color 10000s;
   transition-delay: 10000s;
   -webkit-text-fill-color: var(--grey-000);
@@ -211,4 +234,4 @@
   -webkit-text-fill-color: var(--grey-000);
   -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
   box-shadow: 0 0 0 30px var(--gray-800) inset !important;
-}
+} */

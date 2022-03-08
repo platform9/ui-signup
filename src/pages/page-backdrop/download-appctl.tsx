@@ -15,7 +15,10 @@ export default function DownloadAppCtl() {
           Want to run Apps, not Clusters?
         </Text>
         <Text variant="body-large" className="DownloadAppCtl__Body">
-          Deploy your app on Kubernetes in seconds with <b>Appctl</b>
+          Deploy your app on Kubernetes in seconds with{' '}
+          <Link href="/appctl/" target="_blank" fixWhitespace={false} variant="body-large">
+            <b>Appctl</b>
+          </Link>
         </Text>
 
         <div className="uiSignupAppDownloadChoiceContainer">

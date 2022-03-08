@@ -1,5 +1,4 @@
 #uiSignupElementsContainer {
-  margin-top: 1.5rem;
   width: 75.625rem;
   min-height: 37.5rem;
   display: grid;
@@ -8,6 +7,9 @@
   position: relative;
   z-index: 1000;
   box-sizing: border-box;
+}
+.uiSignupElementsContainerTitle {
+  white-space: nowrap;
 }
 #uiSignupElementsContainer aside img {
   max-width: 25rem;
@@ -27,7 +29,7 @@
 
 #uiSignupElementsContainer > section {
   display: grid;
-  gap: 3.5rem;
+  gap: 2rem;
   grid-auto-rows: max-content;
   padding-top: 4rem;
 }

@@ -33,7 +33,6 @@ const calloutItems = [
 
 function Container({
   className = '',
-  title = 'Managed Kubernetes Anywhere - Fast & Easy.',
   children,
   rightPanel = true,
   previousPane,
@@ -49,7 +48,11 @@ function Container({
       className={!!rightPanel ? `uiSignupElementsContainer-full-width ${className}` : className}
     >
       <section>
-        <Text variant="h2">{title}</Text>
+        <Text variant="h2" className="uiSignupElementsTextGrey000 uiSignupElementsContainerTitle">
+          A Better Way to Run
+          <br />
+          Kubernetes - Fast & Easy.
+        </Text>
         <ul id="uiSignupElementsContainerCallouts">
           {calloutItems.map((item, index) => (
             <li key={index} id="uiSignupElementsContainerCalloutItem">

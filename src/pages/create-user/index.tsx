@@ -65,8 +65,7 @@ function CreateUser({ setContextValue, user, formErrors, ...props }: PropsWithCo
     <Container className="uiSignupPagesCreateUserContainer">
       <div className="uiSignupPagesCreateUserFormTitleContainer">
         <Text variant="h3" className="uiSignupElementsTextBlue200">
-          Get Started with <br />
-          Kubernetes for Free
+          Get Started for Free
         </Text>
         {feedbackState.error && (
           <Text variant="caption2" className="uiSignupElementsTextRed500">
