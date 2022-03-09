@@ -1,5 +1,5 @@
 import React from 'react'
-import { ViewPanes, DeployTargets } from './constants'
+import { ViewPanes } from './constants'
 
 export interface IUser {
   firstName: string
@@ -14,9 +14,7 @@ export interface IEmbarkUser {
 }
 
 export interface IAppState {
-  showUnsureModal?: boolean
   activePane: ViewPanes
-  deployTarget?: DeployTargets
   termsAccepted: boolean
   user: IUser
   embarkUser: IEmbarkUser
@@ -28,9 +26,7 @@ export const appDefaultState: IAppContext = {
     console.error('AppContext not found')
   },
   activePane: ViewPanes.CreateUser,
-  deployTarget: undefined,
   termsAccepted: false,
-  showUnsureModal: false,
   user: {} as any,
   embarkUser: {},
   formErrors: {},

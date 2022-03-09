@@ -6,7 +6,7 @@
   color: var(--grey-000) !important;
   margin: 0 !important;
   border-radius: 0 !important;
-  min-width: 17.5rem;
+  min-width: unset;
   padding-top: calc(1.5em + 2px) !important;
 }
 

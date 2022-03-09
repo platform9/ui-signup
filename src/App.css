@@ -26,6 +26,24 @@
   --orange-500: #ff8a00;
 }
 
+/* #uiSignupAppMainEntry * {
+  box-sizing: border-box;
+} */
+
+html body .wrapper #header-signup {
+  background-color: transparent !important;
+}
+html body .wrapper #page-custom {
+  height: auto !important;
+  z-index: 10;
+  padding-top: 0 !important;
+}
+html body .wrapper #page-custom > div.ctn {
+  min-height: 53.5rem; /* svg backdrop height + margin */
+  max-width: unset;
+  padding: 0 !important;
+}
+
 #uiSignupAppMainEntry {
   background-color: var(--grey-900);
   display: grid;
@@ -36,6 +54,10 @@
   gap: 2rem;
   padding: 0 1.25rem;
   padding-top: 7.5rem;
+  padding-bottom: 8.5rem;
+  position: relative;
+  box-sizing: border-box;
+  top: -4rem;
 }
 
 .uiSignupAppMainTitle {
@@ -43,14 +65,32 @@
   margin-left: 1rem;
 }
 
-@media screen and (max-width: 1200px) {
-  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width,
-  #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
-    min-height: auto;
-    width: 940px;
+@media screen and (max-width: 1300px) {
+  html {
+    font-size: 15px !important;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer aside img {
-    max-width: 21.875rem;
+
+  #uiSignupAppMainEntry #uiSignupElementsContainer {
+    gap: 5rem;
+    width: 68.75rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl article {
+    width: 68.75rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #uiSignupAppMainEntry #uiSignupElementsContainer {
+    width: 56.25rem;
+    gap: 3.125rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl {
+    bottom: 2rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl article {
+    width: 56.25rem;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer aside {
+    padding: 2.75rem 3rem 2rem 3rem;
   }
   #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
     grid-template-columns: 1fr max-content;
@@ -69,14 +109,27 @@
   html {
     font-size: 15px !important;
   }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
+    align-items: end;
+    padding-bottom: 1rem;
+    bottom: 0;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl > article {
+    justify-items: center;
+    width: auto;
+    padding: 0 1.5rem;
+  }
   #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     grid-template-columns: unset;
+    width: 31.25rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropDownloadAppCtl article {
     width: 31.25rem;
   }
   #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
     width: auto;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer aside {
+  #uiSignupAppMainEntry #uiSignupElementsContainer > section {
     display: none;
   }
 }
@@ -85,13 +138,24 @@
   html {
     font-size: 14px !important;
   }
-  #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+  #uiSignupAppMainEntry {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
+    left: -2rem;
+    right: -2rem;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdropGradient {
+    left: -2rem;
+  } */
+  /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: 31.25rem;
   }
   #uiSignupAppMainEntry #uiSignupElementsContainer:not(.uiSignupElementsContainer-full-width) {
     padding: 2rem 2rem 2.75rem;
-  }
-  #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
+  } */
+  /* #uiSignupAppMainEntry #uiSignupPagesGettingStartedForm {
     grid-template-columns: unset;
     justify-items: start;
     gap: 2rem;
@@ -103,9 +167,9 @@
   #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
     grid-template-columns: repeat(3, minmax(auto, 8.25rem));
     justify-content: center;
-  }
+  } */
   #uiSignupAppMainEntry .uiSignupPagesCreateUserFormTOS,
-  #uiSignupElementsContainer section > a.uiSignupElementsLink {
+  #uiSignupElementsContainer aside > a.uiSignupElementsLink {
     margin: 1rem 0;
   }
 }
@@ -114,13 +178,60 @@
   html {
     font-size: 13px !important;
   }
+  html body .wrapper #page-custom {
+    overflow: hidden;
+  }
   #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
+    width: 100vw;
+  }
+  #uiSignupAppMainEntry #uiSignupElementsContainer > aside {
+    padding: 2.75rem 2.5rem 2rem 2.5rem;
+    border: 0;
+    border-radius: 0;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop svg#platform9-management-plane {
+    display: none;
+  }
+  #uiSignupAppMainEntry .uiSignupAppPageBackdrop .uiSignupAppPageBackdropDownloadAppCtl {
+    background: none;
+  }
+  /* #uiSignupAppMainEntry #uiSignupElementsContainer.uiSignupElementsContainer-full-width {
     width: max-content;
     padding: 0 3rem;
     background-color: var(--grey-800);
-  }
-  #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
+  } */
+  /* #uiSignupAppMainEntry .uiSignupPagesGettingStartedLogoStrip {
     grid-template-columns: repeat(2, minmax(auto, 8.25rem));
     justify-content: center;
-  }
+  } */
 }
+
+/* *:-webkit-autofill {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+}
+
+*:-webkit-autofill:hover {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+}
+*:-webkit-autofill:focus {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+}
+*:-webkit-autofill:active {
+  transition: background-color 10000s;
+  transition-delay: 10000s;
+  -webkit-text-fill-color: var(--grey-000);
+  -webkit-box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+  box-shadow: 0 0 0 30px var(--gray-800) inset !important;
+} */

@@ -5,13 +5,14 @@ import './style.css'
 import React, { PropsWithChildren } from 'react'
 
 // Elements
-import Icon from '../icon'
+import Icon, { ValidIcons } from '../icon'
 import Text from '../text'
 
 interface Props
   extends React.DetailedHTMLProps<React.AllHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   variant?: 'primary' | 'secondary'
-  nextArrow?: boolean
+  color?: 'primary' | 'secondary'
+  icon?: ValidIcons
   container?: 'lg' | 'sm'
 }
 
@@ -20,20 +21,23 @@ export default function Button({
   container = 'sm',
   className = '',
   variant = 'primary',
+  color = 'primary',
   disabled = false,
-  nextArrow = false,
+  icon = undefined,
   onClick,
   ...props
 }: PropsWithChildren<Props>) {
   const disabledClass = disabled ? 'disabled' : ''
-  const nextArrowClass = nextArrow ? 'uiSignupElementsButtonArrow' : ''
+  const iconClass = !!icon ? 'uiSignupElementsButtonIcon' : ''
+  const colorClass = color === 'secondary' ? 'uiSignupElementsButton__pink' : ''
   const btn = `uiSignupElementsButton btn ${container === 'lg' ? 'uiSignupElementsButtonLg' : ''}`
-  const classes = `${btn} btn-${variant} ${disabledClass} ${nextArrowClass} ${className}`.trim()
+  const classes =
+    `${btn} btn-${variant} ${disabledClass} ${iconClass} ${colorClass} ${className}`.trim()
 
   return (
     <a className={classes} {...props} onClick={!disabled ? onClick : undefined}>
       <Text variant="buttonPrimary">{children}</Text>
-      {nextArrow && <Icon icon="right-arrow" />}
+      {icon && <Icon icon={icon} />}
     </a>
   )
 }

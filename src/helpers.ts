@@ -6,17 +6,8 @@ export function pxToRem(px) {
 }
 
 export const getElementProps = (props: any = {}): any => {
-  const {
-    setContextValue,
-    activePane,
-    deployTarget,
-    showUnsureModal,
-    termsAccepted,
-    user,
-    embarkUser,
-    formErrors,
-    ...rest
-  } = props
+  const { setContextValue, activePane, termsAccepted, user, embarkUser, formErrors, ...rest } =
+    props
   return rest
 }
 
@@ -38,9 +29,7 @@ export const getActivePaneFromUrl = (search) => {
   return activePane
 }
 export const getActivePaneFromState = (state: IAppContext) => {
-  if (!state.deployTarget) {
-    return ViewPanes.GettingStarted
-  } else if (
+  if (
     !state.user ||
     !state.user.firstName ||
     !state.user.lastName ||
@@ -56,7 +45,7 @@ export const getActivePaneFromState = (state: IAppContext) => {
   ) {
     return ViewPanes.ConfirmAndDeploy
   }
-  return ViewPanes.GettingStarted
+  return ViewPanes.CreateUser
 }
 
 export const getDefaultEmail = getSearchValueFromUrl('email')
@@ -100,22 +89,10 @@ export const rehydrateState = (defaultState): IAppState => {
 
 export const findActiveView = (state: IAppContext) => {
   const activePane = getActivePaneFromUrl(window.location.search)
-  const furthestPaneByState = getActivePaneFromState(state)
 
   // Nothing in the url, so use the state
   if (!activePane) {
-    return furthestPaneByState
+    return getActivePaneFromState(state)
   }
-
-  // Validate we have state data for the specified pane
-  // The url is pointing to create user
-  if (activePane === ViewPanes.CreateUser && furthestPaneByState !== ViewPanes.GettingStarted) {
-    return activePane
-  }
-  // The url is pointing to confirm and deploy
-  if (activePane === ViewPanes.ConfirmAndDeploy && furthestPaneByState === activePane) {
-    return activePane
-  }
-  // active pane can only be getting started
   return activePane
 }

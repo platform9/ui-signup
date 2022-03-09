@@ -9,13 +9,7 @@
 .uiSignupElementsButtonLg {
   height: 3.5rem;
 }
-.uiSignupElementsButtonArrow {
-  grid-auto-flow: column;
-  grid-auto-columns: max-content max-content;
-  gap: 0.5625rem;
-}
-
-.uiSignupElementsButtonArrow {
+.uiSignupElementsButtonIcon {
   grid-auto-flow: column;
   grid-auto-columns: max-content max-content;
   gap: 0.5625rem;
@@ -30,4 +24,15 @@ a.uiSignupElementsButton.btn.btn-secondary {
 }
 a.uiSignupElementsButton.btn.btn-secondary:hover {
   background: rgba(0, 0, 0, 0.2) !important;
+}
+
+a.uiSignupElementsButton__pink {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  background-color: var(--pink-500) !important;
+  border-color: var(--pink-500) !important;
+}
+a.uiSignupElementsButton__pink:hover {
+  background-color: var(--pink-700) !important;
+  border-color: var(--pink-700) !important;
 }
