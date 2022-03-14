@@ -28,7 +28,7 @@ const calloutItems = [
   'Build clusters on bare metal, VMs, or public clouds',
   'Import existing clusters from EKS, AKS, GKE',
   'Provide any user with instant access to view, deploy and troubleshoot your apps',
-  'Centerally manage Kubernetes environments, upgrades, RBAC and more',
+  'Centrally manage Kubernetes environments, upgrades, RBAC and more',
 ]
 
 function Container({
