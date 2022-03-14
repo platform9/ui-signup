@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
+import { SegmentAnalytics } from '../../analytics'
 import Button from '../../elements/button'
 import Link from '../../elements/link'
 import Text from '../../elements/text'
+
+enum SupportedAppctlOperatingSystems {
+  MacOS = 'MacOS',
+  Linux = 'Linux',
+  Windows = 'Windows',
+}
 
 export default function DownloadAppCtl() {
   const [expanded, setExpanded] = useState(false)
   const handleClick = () => {
     setExpanded(!expanded)
+  }
+  const handleTrackDownload = (OS) => () => {
+    SegmentAnalytics.track('Downloaded Appctl', { OS })
   }
   return (
     <div className="uiSignupAppPageBackdropDownloadAppCtl">
@@ -31,6 +41,7 @@ export default function DownloadAppCtl() {
                 <a
                   href="https://pmkft-assets.s3.us-west-1.amazonaws.com/appctl/macos/appctl"
                   id="appctl-mac"
+                  onClick={handleTrackDownload(SupportedAppctlOperatingSystems.MacOS)}
                   download
                 >
                   <Text variant="body1">Get Appctl for MacOS</Text>
@@ -40,6 +51,7 @@ export default function DownloadAppCtl() {
                 <a
                   href="https://pmkft-assets.s3.us-west-1.amazonaws.com/appctl/windows/appctl"
                   id="appctl-win"
+                  onClick={handleTrackDownload(SupportedAppctlOperatingSystems.Windows)}
                   download
                 >
                   <Text variant="body1">Get Appctl for Windows</Text>
@@ -49,6 +61,7 @@ export default function DownloadAppCtl() {
                 <a
                   href="https://pmkft-assets.s3.us-west-1.amazonaws.com/appctl/linux/appctl"
                   id="appctl-linux"
+                  onClick={handleTrackDownload(SupportedAppctlOperatingSystems.Linux)}
                   download
                 >
                   <Text variant="body1">Get Appctl for Linux</Text>
