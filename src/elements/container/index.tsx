@@ -24,11 +24,11 @@ type Props = PropsWithChildren<{
 }>
 
 const calloutItems = [
-  '2 clusters, 8 nodes - free forever',
-  'Build clusters on bare metal, VMs, or public clouds',
-  'Import existing clusters from EKS, AKS, GKE',
-  'Provide any user with instant access to view, deploy and troubleshoot your apps',
-  'Centrally manage Kubernetes environments, upgrades, RBAC and more',
+  'Dedicated Platform9 SaaS Instance to build, scale and operate Kubernetes',
+  'Run on-prem with bare metal or VMs. Build in AWS and Azure, or import clusters from EKS, AKS and GKE',
+  'Increase developer productivity via real-time workload dashboards with pod status, container logs, K8s events and more',
+  'Consume ArgoCD-as-a-service for zero-setup continuous delivery to any cluster; just attach your git repo',
+  '2 clusters with up to 8 nodes - free forever',
 ]
 
 function Container({
@@ -49,9 +49,9 @@ function Container({
     >
       <section>
         <Text variant="h2" className="uiSignupElementsTextGrey000 uiSignupElementsContainerTitle">
-          A Better Way to Run
+        A better way to go Cloud Native
           <br />
-          Kubernetes - Fast & Easy.
+          Kubernetes with ArgoCD
         </Text>
         <ul id="uiSignupElementsContainerCallouts">
           {calloutItems.map((item, index) => (
