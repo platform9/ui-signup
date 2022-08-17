@@ -12,7 +12,6 @@ export default function PageBackdrop() {
   return (
     <div className="uiSignupAppPageBackdrop">
       <div className="uiSignupAppPageBackdropGradient" />
-      <DownloadAppCtl />
       <ManagementPlane />
     </div>
   )
